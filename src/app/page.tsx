@@ -17,6 +17,7 @@ import {
 const solutions = [
   {
     title: "Water Bottling Turnkey Line",
+    href: "/solutions/water-filling-line",
     image: "/images/home/turnkey-lines/water-bottling-turnkey-line-layout.jpg",
     imageAlt:
       "Complete water bottling turnkey line layout with bottle blowing, filling, labeling, packing, and palletizing machines",
@@ -24,6 +25,7 @@ const solutions = [
   },
   {
     title: "Carbonated Drink Filling Line",
+    href: "/solutions/carbonated-drink-filling-line",
     image: "/images/home/turnkey-lines/carbonated-drink-filling-line-layout.jpg",
     imageAlt:
       "Carbonated drink filling line layout for soda, sparkling water, conveying, packing, and palletizing",
@@ -31,6 +33,7 @@ const solutions = [
   },
   {
     title: "Juice Beverage Filling Line",
+    href: "/solutions/juice-filling-line",
     image: "/images/home/turnkey-lines/juice-beverage-filling-line-layout.jpg",
     imageAlt:
       "Juice beverage filling line layout with blending, sterilizing, bottle filling, labeling, and packaging equipment",
@@ -38,6 +41,7 @@ const solutions = [
   },
   {
     title: "Edible Oil Filling Line",
+    href: "/solutions/oil-filling-line",
     image: "/images/home/turnkey-lines/edible-oil-filling-line-layout.jpg",
     imageAlt:
       "Edible oil filling line layout with PET bottle filling, labeling, carton packing, and palletizing equipment",
@@ -45,6 +49,7 @@ const solutions = [
   },
   {
     title: "Beer Bottling Turnkey Line",
+    href: "/solutions/beer-filling-line",
     image: "/images/home/turnkey-lines/beer-bottling-turnkey-line-layout.jpg",
     imageAlt:
       "Beer bottling turnkey line layout with glass bottle filling, labeling, packaging, conveying, and palletizing",
@@ -317,10 +322,10 @@ export default function HomePage() {
         </div>
       </header>
 
-      <section className="relative min-h-[940px] overflow-hidden">
+      <section className="relative overflow-hidden">
         <img
           alt="Sokos beverage filling machine manufacturer turnkey production line"
-          className="absolute inset-0 size-full object-cover"
+          className="block h-auto w-full"
           src="/images/home/sokos-beverage-filling-machine-manufacturer-banner.jpg"
         />
         <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#07111f]/90 to-transparent" />
@@ -385,8 +390,9 @@ export default function HomePage() {
         <div className="ml-0 lg:ml-[max(2rem,calc((100vw-1320px)/2+2rem))]">
           <div className="flex gap-6 overflow-x-auto px-5 pb-4 md:px-8 lg:pl-0 lg:pr-0">
             {solutions.map((item) => (
-              <article
+              <Link
                 className="group w-full shrink-0 bg-[#10243a] sm:w-[460px] xl:w-[620px]"
+                href={item.href}
                 key={item.title}
               >
                 <div className="aspect-[2/1] overflow-hidden bg-[#eef3f6]">
@@ -403,7 +409,7 @@ export default function HomePage() {
                   <h3 className="text-2xl font-semibold uppercase">{item.title}</h3>
                   <p className="mt-4 text-sm leading-6 text-slate-300">{item.text}</p>
                 </div>
-              </article>
+              </Link>
             ))}
           </div>
         </div>
