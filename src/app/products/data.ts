@@ -16,7 +16,7 @@ import {
 } from "@/app/products/water-filling-machine/data";
 import { auxiliaryProducts, type AuxiliaryProduct } from "@/app/products/auxiliary/data";
 
-export type V2Product = {
+export type Product = {
   categorySlug: string;
   model: string;
   slug: string;
@@ -29,7 +29,7 @@ export type V2Product = {
   parameters: string[][];
 };
 
-export type V2ProductCategory = {
+export type ProductCategory = {
   slug: string;
   title: string;
   eyebrow: string;
@@ -37,10 +37,10 @@ export type V2ProductCategory = {
   image: string;
   code: string;
   metric: string;
-  products: V2Product[];
+  products: Product[];
 };
 
-type FillingProductSource = Omit<V2Product, "categorySlug" | "parameters"> & {
+type FillingProductSource = Omit<Product, "categorySlug" | "parameters"> & {
   parameters: readonly (readonly string[])[];
 };
 
@@ -50,7 +50,7 @@ const normalizeParameters = (parameters: readonly (readonly string[])[]) =>
 function fromFillingProducts(
   categorySlug: string,
   products: FillingProductSource[],
-): V2Product[] {
+): Product[] {
   return products.map((product) => ({
     ...product,
     categorySlug,
@@ -58,7 +58,7 @@ function fromFillingProducts(
   }));
 }
 
-function fromAuxiliaryProducts(categorySlug: string, products: AuxiliaryProduct[]): V2Product[] {
+function fromAuxiliaryProducts(categorySlug: string, products: AuxiliaryProduct[]): Product[] {
   return products.map((product) => ({
     categorySlug,
     description: product.description,
@@ -82,7 +82,7 @@ const fillingProducts = [
   ...fromFillingProducts("filling-machine", glassBottleBeerProducts),
 ];
 
-export const productCategoriesV2: V2ProductCategory[] = [
+export const productCategories: ProductCategory[] = [
   {
     slug: "water-treatment",
     title: "Water Treatment",
@@ -197,37 +197,37 @@ export const productCategoriesV2: V2ProductCategory[] = [
 
 export const fillingSubCategories = [
   {
-    href: "/products-v2/filling-machine",
+    href: "/products/filling-machine",
     title: "Water Filling Machine",
     text: waterDescription,
     image: "/images/products/water-filling-machine/cgf-60-60-20.jpg",
   },
   {
-    href: "/products-v2/filling-machine",
+    href: "/products/filling-machine",
     title: "Carbonated Beverage Filling Machine",
     text: carbonatedDescription,
     image: "/images/products/carbonated-beverages-filling-machine/dcgf-60-60-20.jpg",
   },
   {
-    href: "/products-v2/filling-machine",
+    href: "/products/filling-machine",
     title: "Juice Filling Machine",
     text: juiceDescription,
     image: "/images/products/juice-filling-machine/rcgf-40-40-10.jpg",
   },
   {
-    href: "/products-v2/filling-machine",
+    href: "/products/filling-machine",
     title: "Glass Bottle Beer Filling Machine",
     text: beerDescription,
     image: "/images/products/glass-bottle-beer-filling-machine/bdcgf-24-24-8.jpg",
   },
 ];
 
-export function getProductCategoryV2(slug: string) {
-  return productCategoriesV2.find((category) => category.slug === slug);
+export function getProductCategory(slug: string) {
+  return productCategories.find((category) => category.slug === slug);
 }
 
-export function getProductV2(categorySlug: string, productSlug: string) {
-  return getProductCategoryV2(categorySlug)?.products.find(
+export function getProduct(categorySlug: string, productSlug: string) {
+  return getProductCategory(categorySlug)?.products.find(
     (product) => product.slug === productSlug,
   );
 }

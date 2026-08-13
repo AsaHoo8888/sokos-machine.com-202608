@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Send, ShieldCheck, Sparkles } from "lucide-react";
-import { HomeV2Footer, HomeV2Header, SmallLabel } from "@/components/home-v2-shell";
-import { getProductCategoryV2, getProductV2, productCategoriesV2 } from "../../data";
+import { MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { getProductCategory, getProduct, productCategories } from "../../data";
 
 type ProductPageProps = {
   params: Promise<{
@@ -12,7 +12,7 @@ type ProductPageProps = {
 };
 
 export function generateStaticParams() {
-  return productCategoriesV2.flatMap((category) =>
+  return productCategories.flatMap((category) =>
     category.products.map((product) => ({
       category: category.slug,
       slug: product.slug,
@@ -22,7 +22,7 @@ export function generateStaticParams() {
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const { category, slug } = await params;
-  const product = getProductV2(category, slug);
+  const product = getProduct(category, slug);
 
   if (!product) return {};
 
@@ -32,10 +32,10 @@ export async function generateMetadata({ params }: ProductPageProps) {
   };
 }
 
-export default async function ProductsV2DetailPage({ params }: ProductPageProps) {
+export default async function ProductDetailPage({ params }: ProductPageProps) {
   const { category: categorySlug, slug } = await params;
-  const category = getProductCategoryV2(categorySlug);
-  const product = getProductV2(categorySlug, slug);
+  const category = getProductCategory(categorySlug);
+  const product = getProduct(categorySlug, slug);
 
   if (!category || !product) notFound();
 
@@ -52,13 +52,13 @@ export default async function ProductsV2DetailPage({ params }: ProductPageProps)
 
   return (
     <main className="bg-[#07111f] text-white">
-      <HomeV2Header active="Products" />
+      <MainSiteHeader active="Products" />
 
       <section className="bg-[#07111f] px-5 py-20 md:px-8 lg:py-28">
         <div className="mx-auto max-w-[1320px]">
           <Link
             className="mb-12 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#c8ff2e]"
-            href={`/products-v2/${category.slug}`}
+            href={`/products/${category.slug}`}
           >
             <ArrowLeft size={16} />
             Back to {category.title}
@@ -210,7 +210,7 @@ export default async function ProductsV2DetailPage({ params }: ProductPageProps)
         </div>
       </section>
 
-      <HomeV2Footer />
+      <MainSiteFooter />
     </main>
   );
 }

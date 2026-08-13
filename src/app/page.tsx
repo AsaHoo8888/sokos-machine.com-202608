@@ -17,35 +17,35 @@ import {
 const solutions = [
   {
     title: "Water Bottling Turnkey Line",
-    image: "/images/home-v2/turnkey-lines/water-bottling-turnkey-line-layout.jpg",
+    image: "/images/home/turnkey-lines/water-bottling-turnkey-line-layout.jpg",
     imageAlt:
       "Complete water bottling turnkey line layout with bottle blowing, filling, labeling, packing, and palletizing machines",
     text: "Complete bottled water plant layout from bottle blowing and filling to labeling, carton packing, and palletizing.",
   },
   {
     title: "Carbonated Drink Filling Line",
-    image: "/images/home-v2/turnkey-lines/carbonated-drink-filling-line-layout.jpg",
+    image: "/images/home/turnkey-lines/carbonated-drink-filling-line-layout.jpg",
     imageAlt:
       "Carbonated drink filling line layout for soda, sparkling water, conveying, packing, and palletizing",
     text: "Integrated isobaric filling line for sparkling water, soda, cola, and other carbonated beverage projects.",
   },
   {
     title: "Juice Beverage Filling Line",
-    image: "/images/home-v2/turnkey-lines/juice-beverage-filling-line-layout.jpg",
+    image: "/images/home/turnkey-lines/juice-beverage-filling-line-layout.jpg",
     imageAlt:
       "Juice beverage filling line layout with blending, sterilizing, bottle filling, labeling, and packaging equipment",
     text: "Hot-fill juice and tea production line with blending, sterilization, filling, labeling, and end-of-line packaging.",
   },
   {
     title: "Edible Oil Filling Line",
-    image: "/images/home-v2/turnkey-lines/edible-oil-filling-line-layout.jpg",
+    image: "/images/home/turnkey-lines/edible-oil-filling-line-layout.jpg",
     imageAlt:
       "Edible oil filling line layout with PET bottle filling, labeling, carton packing, and palletizing equipment",
     text: "Turnkey edible oil line for PET bottle handling, oil filling, labeling, carton packing, and palletized delivery.",
   },
   {
     title: "Beer Bottling Turnkey Line",
-    image: "/images/home-v2/turnkey-lines/beer-bottling-turnkey-line-layout.jpg",
+    image: "/images/home/turnkey-lines/beer-bottling-turnkey-line-layout.jpg",
     imageAlt:
       "Beer bottling turnkey line layout with glass bottle filling, labeling, packaging, conveying, and palletizing",
     text: "Glass bottle beer line covering depalletizing, rinsing, filling, capping, labeling, packing, and palletizing.",
@@ -54,22 +54,22 @@ const solutions = [
 
 const deliveryImages = [
   {
-    src: "/images/home-v2/project-delivery/sokos-customer-project-meeting.jpg",
+    src: "/images/home/project-delivery/sokos-customer-project-meeting.jpg",
     alt: "Sokos beverage filling line project meeting with customers",
     title: "Project Meeting",
   },
   {
-    src: "/images/home-v2/project-delivery/sokos-overseas-customer-factory-inspection.jpg",
+    src: "/images/home/project-delivery/sokos-overseas-customer-factory-inspection.jpg",
     alt: "Overseas customer inspecting Sokos beverage filling machinery in factory",
     title: "Factory Inspection",
   },
   {
-    src: "/images/home-v2/project-delivery/sokos-filling-line-factory-visit.png",
+    src: "/images/home/project-delivery/sokos-filling-line-factory-visit.png",
     alt: "Sokos team introducing filling line equipment during customer factory visit",
     title: "Factory Visit",
   },
   {
-    src: "/images/home-v2/project-delivery/sokos-filling-machine-container-loading.jpg",
+    src: "/images/home/project-delivery/sokos-filling-machine-container-loading.jpg",
     alt: "Sokos filling machines packed and loaded into containers for overseas delivery",
     title: "Container Loading",
   },
@@ -78,7 +78,7 @@ const deliveryImages = [
 const exhibitions = [
   {
     title: "PROPAK ASIA 2026",
-    image: "/images/home-v2/exhibitions/propak-asia-2026-bangkok-sokos-machinery.jpg",
+    image: "/images/home/exhibitions/propak-asia-2026-bangkok-sokos-machinery.jpg",
     imageAlt: "Sokos Machinery exhibition information for PROPAK ASIA 2026 in Bangkok",
     date: "June 10-13, 2026",
     location: "Bangkok, Thailand",
@@ -87,7 +87,7 @@ const exhibitions = [
   },
   {
     title: "PROPAK INDONESIA 2026",
-    image: "/images/home-v2/exhibitions/propak-indonesia-2026-jakarta-sokos-machinery.jpg",
+    image: "/images/home/exhibitions/propak-indonesia-2026-jakarta-sokos-machinery.jpg",
     imageAlt: "Sokos Machinery exhibition information for PROPAK INDONESIA 2026 in Jakarta",
     date: "July 21-24, 2026",
     location: "Jakarta, Indonesia",
@@ -96,7 +96,7 @@ const exhibitions = [
   },
   {
     title: "CBST 2025 Shanghai",
-    image: "/images/home-v2/exhibitions/cbst-2025-shanghai-sokos-machinery.jpg",
+    image: "/images/home/exhibitions/cbst-2025-shanghai-sokos-machinery.jpg",
     imageAlt: "Sokos Machinery at CBST 2025 Shanghai beverage industry exhibition",
     date: "March 5-7, 2025",
     location: "Shanghai, China",
@@ -105,7 +105,7 @@ const exhibitions = [
   },
   {
     title: "MIHAS 2025 Malaysia",
-    image: "/images/home-v2/exhibitions/mihas-2025-malaysia-newpeak-machinery.jpg",
+    image: "/images/home/exhibitions/mihas-2025-malaysia-newpeak-machinery.jpg",
     imageAlt: "New Peak Machinery exhibition information for MIHAS 2025 Malaysia",
     date: "September 17-20, 2025",
     location: "Malaysia",
@@ -114,7 +114,7 @@ const exhibitions = [
   },
   {
     title: "Gulfood Manufacturing 2024",
-    image: "/images/home-v2/exhibitions/gulfood-manufacturing-2024-dubai-sokos-machinery.jpg",
+    image: "/images/home/exhibitions/gulfood-manufacturing-2024-dubai-sokos-machinery.jpg",
     imageAlt: "Sokos Machinery at Gulfood Manufacturing 2024 Dubai World Trade Centre",
     date: "November 5-7, 2024",
     location: "Dubai, UAE",
@@ -123,7 +123,7 @@ const exhibitions = [
   },
   {
     title: "AGROPRODMASH 2024",
-    image: "/images/home-v2/exhibitions/agroprodmash-2024-moscow-sokos-machinery.jpg",
+    image: "/images/home/exhibitions/agroprodmash-2024-moscow-sokos-machinery.jpg",
     imageAlt: "Sokos Machinery at AGROPRODMASH 2024 Moscow food processing exhibition",
     date: "October 7-11, 2024",
     location: "Moscow, Russia",
@@ -135,32 +135,32 @@ const exhibitions = [
 const applications = [
   {
     title: "Drinking Water",
-    image: "/images/home-v2/application-water.png",
+    image: "/images/home/application-water.png",
     text: "Complete bottled water lines for purified water, mineral water, and spring water plants.",
   },
   {
     title: "Carbonated Drinks",
-    image: "/images/home-v2/application-carbonated.png",
+    image: "/images/home/application-carbonated.png",
     text: "Isobaric filling systems for sparkling water, soda, energy drinks, and carbonated beverages.",
   },
   {
     title: "Juice & Tea",
-    image: "/images/home-v2/application-juice.png",
+    image: "/images/home/application-juice.png",
     text: "Hot filling and blending solutions for juice, tea drinks, functional drinks, and flavored beverages.",
   },
   {
     title: "Edible Oil",
-    image: "/images/home-v2/application-oil.png",
+    image: "/images/home/application-oil.png",
     text: "Oil filling and packaging lines for PET bottles, handles, cartons, and palletized delivery.",
   },
   {
     title: "Beer",
-    image: "/images/home-v2/application-beer.png",
+    image: "/images/home/application-beer.png",
     text: "Glass bottle beer filling lines with depalletizing, rinsing, filling, capping, labeling, and packing.",
   },
   {
     title: "Viscous Products",
-    image: "/images/home-v2/application-viscous.png",
+    image: "/images/home/application-viscous.png",
     text: "Piston filling solutions for sauce, detergent, lotion, and other high-viscosity products.",
   },
 ];
@@ -168,7 +168,7 @@ const applications = [
 const history = [
   {
     year: "2004",
-    image: "/images/home-v2/company-history/sokos-beverage-machinery-factory-entrance.jpg",
+    image: "/images/home/company-history/sokos-beverage-machinery-factory-entrance.jpg",
     imageAlt:
       "Sokos beverage machinery factory entrance in Zhangjiagang, China",
     title: "Factory Foundation",
@@ -176,7 +176,7 @@ const history = [
   },
   {
     year: "2012",
-    image: "/images/home-v2/company-history/sokos-filling-machine-factory-scale.jpg",
+    image: "/images/home/company-history/sokos-filling-machine-factory-scale.jpg",
     imageAlt:
       "Aerial view of Sokos filling machine factory and production scale",
     title: "Manufacturing Expansion",
@@ -184,7 +184,7 @@ const history = [
   },
   {
     year: "2018",
-    image: "/images/home-v2/company-history/sokos-overseas-customer-acceptance.jpg",
+    image: "/images/home/company-history/sokos-overseas-customer-acceptance.jpg",
     imageAlt:
       "Overseas customer acceptance visit for Sokos beverage filling machinery",
     title: "Overseas Project Delivery",
@@ -192,7 +192,7 @@ const history = [
   },
   {
     year: "2025",
-    image: "/images/home-v2/company-history/sokos-exporting-to-80-countries-after-sales-service.jpg",
+    image: "/images/home/company-history/sokos-exporting-to-80-countries-after-sales-service.jpg",
     imageAlt:
       "Sokos exporting to more than 80 countries with 24/7 technical support and after-sales service",
     title: "Global Service Network",
@@ -230,19 +230,19 @@ const mapFlags = [
 const certificates = [
   [
     "CAC Machinery Directive Certificate",
-    "/images/home-v2/certificates/sokos-cac-machinery-directive-certificate.jpg",
+    "/images/home/certificates/sokos-cac-machinery-directive-certificate.jpg",
   ],
   [
     "UDEM Machinery Directive Certificate",
-    "/images/home-v2/certificates/sokos-udem-machinery-directive-certificate.jpg",
+    "/images/home/certificates/sokos-udem-machinery-directive-certificate.jpg",
   ],
   [
     "ISO 9001 Quality Management Certificate",
-    "/images/home-v2/certificates/sokos-iso-9001-quality-management-certificate.jpg",
+    "/images/home/certificates/sokos-iso-9001-quality-management-certificate.jpg",
   ],
   [
     "High-Tech Enterprise Certificate",
-    "/images/home-v2/certificates/sokos-high-tech-enterprise-certificate.jpg",
+    "/images/home/certificates/sokos-high-tech-enterprise-certificate.jpg",
   ],
 ];
 
@@ -278,30 +278,30 @@ function ArrowButton({ href, label, dark = false }: { href: string; label: strin
 }
 
 export const metadata = {
-  title: "Sokos Machinery Home V2",
+  title: "Sokos Machinery Home",
   description:
     "Steelix-inspired second homepage layout for Sokos Machinery, featuring production lines, factory scale, culture, history, overseas markets, and certificates.",
 };
 
-export default function HomeV2Page() {
+export default function HomePage() {
   return (
     <main className="bg-[#07111f] text-white">
       <header className="relative z-30 border-b border-slate-200 bg-white">
         <div className="mx-auto flex h-20 max-w-[1320px] items-center justify-between px-5 md:px-8">
-          <Link className="flex items-center gap-3" href="/home-v2">
+          <Link className="flex items-center gap-3" href="/">
             <img
               alt="Sokos Machinery"
               className="h-11 w-auto"
-              src="/images/home-v2/sokos-logo-wide.png"
+              src="/images/home/sokos-logo-wide.png"
             />
           </Link>
           <nav className="hidden items-center gap-8 font-mono text-xs uppercase tracking-[0.18em] text-slate-700 lg:flex">
             {[
-              ["Home", "/home-v2"],
-              ["Solutions", "/solutions-v2"],
-              ["Products", "/products-v2"],
-              ["About", "/about-v2"],
-              ["Contact", "/contact-v2"],
+              ["Home", "/"],
+              ["Solutions", "/solutions"],
+              ["Products", "/products"],
+              ["About", "/about"],
+              ["Contact", "/contact"],
             ].map(([label, href]) => (
               <Link className="transition hover:text-primary" href={href} key={label}>
                 {label}
@@ -310,7 +310,7 @@ export default function HomeV2Page() {
           </nav>
           <Link
             className="hidden items-center gap-2 bg-[#c8ff2e] px-5 py-3 font-mono text-xs uppercase tracking-[0.16em] text-[#07111f] md:inline-flex"
-            href="/contact-v2"
+            href="/contact"
           >
             Get Quote <ChevronRight size={14} />
           </Link>
@@ -321,7 +321,7 @@ export default function HomeV2Page() {
         <img
           alt="Sokos beverage filling machine manufacturer turnkey production line"
           className="absolute inset-0 size-full object-cover"
-          src="/images/home-v2/sokos-beverage-filling-machine-manufacturer-banner.jpg"
+          src="/images/home/sokos-beverage-filling-machine-manufacturer-banner.jpg"
         />
         <div className="absolute bottom-0 left-0 right-0 h-28 bg-gradient-to-t from-[#07111f]/90 to-transparent" />
       </section>
@@ -357,7 +357,7 @@ export default function HomeV2Page() {
             <img
               alt="Sokos factory production workshop"
               className="col-span-2 h-[280px] w-full object-cover object-[center_28%]"
-              src="/images/home-v2/industrial-workshop-wide.jpg"
+              src="/images/home/industrial-workshop-wide.jpg"
             />
             <img
               alt="Sokos factory assembly workshop"
@@ -380,7 +380,7 @@ export default function HomeV2Page() {
               rail stretches to the right edge of the screen for a stronger industrial layout.
             </p>
           </div>
-          <ArrowButton dark href="/solutions-v2" label="Explore" />
+          <ArrowButton dark href="/solutions" label="Explore" />
         </div>
         <div className="ml-0 lg:ml-[max(2rem,calc((100vw-1320px)/2+2rem))]">
           <div className="flex gap-6 overflow-x-auto px-5 pb-4 md:px-8 lg:pl-0 lg:pr-0">
@@ -418,7 +418,7 @@ export default function HomeV2Page() {
                 Meet Sokos Machinery At Global Industry Exhibitions
               </h2>
             </div>
-            <ArrowButton href="/contact-v2" label="Contact us" />
+            <ArrowButton href="/contact" label="Contact us" />
           </div>
           <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-3">
             {exhibitions.map((item) => (
@@ -461,7 +461,7 @@ export default function HomeV2Page() {
         <img
           alt="Sokos factory exterior"
           className="absolute inset-0 size-full object-cover opacity-88"
-          src="/images/home-v2/since-2004-factory.jpg"
+          src="/images/home/since-2004-factory.jpg"
         />
         <div className="absolute inset-0 bg-[#07111f]/28" />
         <div className="relative mx-auto max-w-[1320px]">
@@ -536,7 +536,7 @@ export default function HomeV2Page() {
                 support across major overseas markets.
               </p>
             </div>
-            <ArrowButton dark href="/about-v2" label="About us" />
+            <ArrowButton dark href="/about" label="About us" />
           </div>
 
           <div className="px-0 py-4 text-white lg:py-8">
@@ -624,7 +624,7 @@ export default function HomeV2Page() {
                 From water and carbonated drinks to juice, oil, beer, and viscous products, Sokos
                 configures complete line solutions around each product process and bottle format.
               </p>
-              <ArrowButton href="/solutions-v2" label="View projects" />
+              <ArrowButton href="/solutions" label="View projects" />
             </div>
           </div>
           <div className="grid grid-cols-1 gap-px overflow-hidden bg-slate-200 md:grid-cols-2 xl:grid-cols-3">
@@ -633,7 +633,7 @@ export default function HomeV2Page() {
                 className={`group relative min-h-[360px] overflow-hidden bg-[#10243a] ${
                   index === 0 ? "xl:col-span-2" : ""
                 }`}
-                href="/solutions-v2"
+                href="/solutions"
                 key={item.title}
               >
                 <img
@@ -692,7 +692,7 @@ export default function HomeV2Page() {
             <img
               alt="Sokos global project world map"
               className="absolute inset-0 size-full object-cover"
-              src="/images/home-v2/world-map-dots.jpg"
+              src="/images/home/world-map-dots.jpg"
             />
             <div className="absolute inset-0 bg-white/5" />
             {mapFlags.map(([flag, country, position]) => (
@@ -785,14 +785,14 @@ export default function HomeV2Page() {
             <img
               alt="Sokos Machinery"
               className="h-14 w-auto"
-              src="/images/home-v2/sokos-logo-white.png"
+              src="/images/home/sokos-logo-white.png"
             />
             <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
               Complete beverage filling and packaging lines for global factories.
             </p>
           </div>
           <div className="flex flex-col gap-3 sm:flex-row">
-            <ArrowButton dark href="/contact-v2" label="Contact Us" />
+            <ArrowButton dark href="/contact" label="Contact Us" />
             <Link
               className="inline-flex items-center gap-3 border border-white/20 px-6 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white hover:border-[#c8ff2e] hover:text-[#c8ff2e]"
               href="/"

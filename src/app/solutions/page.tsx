@@ -1,200 +1,99 @@
 import Link from "next/link";
 import { ArrowRight, DraftingCompass, Factory, Globe2 } from "lucide-react";
-import { SiteFooter, SiteHeader } from "@/components/site-shell";
-
-const heroImage =
-  "/images/water-line-2.jpg";
-
-const solutions = [
-  {
-    code: "WFL-9000",
-    title: "Water Filling Line",
-    href: "/solutions/water-filling-line",
-    description:
-      "High-speed rotary systems for pure, mineral, and distilled water in PET or glass bottles.",
-    image: "/images/water-line-2.jpg",
-  },
-  {
-    code: "JFL-SERIES",
-    title: "Juice Filling Line",
-    href: "/solutions/juice-filling-line",
-    description:
-      "Hot-filling and aseptic packaging technologies to preserve nutrient density and flavor profile.",
-    image: "/images/solutions/juice-line.jpg",
-  },
-  {
-    code: "CSD-ULTRA",
-    title: "Carbonated Drink Filling Line",
-    href: "/solutions/carbonated-drink-filling-line",
-    description:
-      "Isobaric filling solutions for soft drinks, mixers, and sparkling waters with advanced CO2 control.",
-    image: "/images/solutions/csd-line.png",
-  },
-  {
-    code: "BFL-3000",
-    title: "Beer Filling Line",
-    href: "/solutions/beer-filling-line",
-    description:
-      "Oxygen-free filling systems designed to maintain the carbonation and integrity of craft brews.",
-    image: "/images/solutions/beer-filling-line-generated.png",
-  },
-  {
-    code: "OIL-PRO",
-    title: "Edible Oil Filling Line",
-    href: "/solutions/oil-filling-line",
-    description:
-      "Weighted filling and drip-free technology for viscous cooking oils and lubricants.",
-    image: "/images/solutions/oil-filling-line.jpg",
-  },
-  {
-    code: "VPF-LINE",
-    title: "Viscous Product Filling Line",
-    href: "/solutions/viscous-product-filling-line",
-    description:
-      "Piston filling, labeling, carton packing, and palletizing for sauces, pastes, creams, and detergents.",
-    image: "/images/solutions/viscous-product-filling-line-generated.png",
-  },
-];
-
-const processSteps = [
-  ["01", "Requirement Analysis", "Defining output goals and bottle specs."],
-  ["02", "Layout Design", "Optimizing factory floor spatial efficiency."],
-  ["03", "Manufacturing", "Precision fabrication of line components."],
-  ["04", "Testing", "Rigorous quality control and dry runs."],
-  ["05", "Shipment", "Secure global logistics and delivery."],
-  ["06", "Installation", "On-site setup and personnel training."],
-];
-
-const advantages = [
-  [
-    Factory,
-    "Factory Direct Supply",
-    "Eliminate middlemen. Buy directly from our ISO-certified manufacturing facility for superior pricing and parts availability.",
-  ],
-  [
-    DraftingCompass,
-    "Custom Engineering",
-    "Our R&D team adapts every component to match your unique bottle shapes and viscosity requirements perfectly.",
-  ],
-  [
-    Globe2,
-    "Global Support",
-    "24/7 technical assistance and on-site engineering teams available in over 60 countries across five continents.",
-  ],
-];
+import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { solutions } from "./data";
 
 export default function SolutionsPage() {
   return (
-    <main className="bg-[#f5f7fa] text-[#131314]">
-      <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
-        <SiteHeader active="SOLUTIONS" />
+    <main className="bg-[#07111f] text-white">
+      <MainSiteHeader active="Solutions" />
 
-        <section className="relative flex h-[520px] items-center overflow-hidden border-b border-[#e2e8f0] pt-24">
-          <div className="absolute inset-0">
-            <img alt="" className="size-full object-cover opacity-95" src={heroImage} />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent" />
-          </div>
-          <div className="relative mx-auto w-full max-w-[1200px] px-5 md:px-16">
-            <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-primary">
-              Global Excellence
-            </span>
-            <h1 className="mb-6 text-5xl font-bold uppercase md:text-7xl">
-              Complete Production
-              <br />
-              Line Solutions
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Turnkey engineering for global beverage manufacturers. We provide end-to-end
-              machinery setups designed for maximum throughput and uncompromising reliability.
-            </p>
-          </div>
-        </section>
+      <section className="relative min-h-[780px] overflow-hidden">
+        <img
+          alt="Turnkey beverage line"
+          className="absolute inset-0 size-full object-cover"
+          src="/images/home/turnkey-line-layout.png"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07111f]/95 via-[#07111f]/72 to-[#07111f]/10" />
+        <div className="relative mx-auto flex min-h-[780px] max-w-[1320px] flex-col justify-end px-5 pb-24 pt-24 md:px-8">
+          <SmallLabel dark>Turnkey Engineering</SmallLabel>
+          <h1 className="max-w-5xl text-5xl font-semibold uppercase leading-[0.95] md:text-8xl">
+            Production Lines Planned As One System
+          </h1>
+          <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">
+            Sokos designs complete beverage and liquid filling lines around product type, target
+            output, bottle format, workshop layout, and long-term serviceability.
+          </p>
+        </div>
+      </section>
 
-        <section className="bg-white py-24 lg:py-[120px]" id="industry-segments">
-          <div className="mx-auto max-w-[1200px] px-5 md:px-16">
-            <div className="mb-16 text-left">
-              <h2 className="mb-3 text-4xl font-bold">Industry Segments</h2>
-              <p className="max-w-xl leading-7 text-slate-600">
-                Precision-engineered filling and packaging lines tailored to your specific
-                product requirements and factory layout.
-              </p>
+      <section className="bg-white px-5 py-24 text-[#07111f] md:px-8 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="mb-14 flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+            <div>
+              <SmallLabel>Solution Library</SmallLabel>
+              <h2 className="text-4xl font-semibold uppercase md:text-6xl">
+                Turnkey Lines
+              </h2>
             </div>
+            <ArrowButton href="/contact" label="Start Project" />
+          </div>
 
-            <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-              {solutions.map((solution) => (
-                <article
-                  className="group flex flex-col justify-between border border-[#e2e8f0] bg-white p-6 shadow-sm transition-all duration-300 hover:border-primary hover:shadow-xl"
-                  key={solution.title}
-                >
-                  <div>
-                    <div className="relative mb-6 aspect-video overflow-hidden border border-[#e2e8f0] bg-[#f5f7fa]">
-                      <img
-                        alt={solution.title}
-                        className="size-full object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
-                        src={solution.image}
-                      />
-                    </div>
-                    <h3 className="mb-3 text-2xl font-bold transition-colors group-hover:text-primary">
-                      {solution.title}
-                    </h3>
-                    <p className="mb-10 leading-7 text-slate-600">{solution.description}</p>
+          <div className="grid gap-8">
+            {solutions.map((solution, index) => (
+              <Link
+                className="group grid overflow-hidden border border-slate-200 bg-white transition hover:border-primary lg:grid-cols-[0.92fr_1.08fr]"
+                href={`/solutions/${solution.slug}`}
+                key={solution.slug}
+              >
+                <div className={`relative min-h-[360px] bg-slate-100 ${index % 2 ? "lg:order-2" : ""}`}>
+                  <img
+                    alt={solution.title}
+                    className="size-full object-cover transition duration-700 group-hover:scale-105"
+                    src={solution.image}
+                  />
+                  <div className="absolute left-6 top-6 bg-primary px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white">
+                    {solution.code}
                   </div>
-                  <Link
-                    className="inline-flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.16em] text-primary transition-transform group-hover:translate-x-2"
-                    href={solution.href}
-                  >
-                    View Details <ArrowRight size={16} />
-                  </Link>
-                </article>
-              ))}
-            </div>
+                </div>
+                <div className="flex flex-col justify-center p-8 md:p-12">
+                  <p className="mb-4 font-mono text-xs uppercase tracking-[0.18em] text-primary">
+                    {solution.market}
+                  </p>
+                  <h3 className="mb-5 text-3xl font-semibold md:text-5xl">{solution.title}</h3>
+                  <p className="mb-8 max-w-2xl leading-8 text-slate-600">{solution.summary}</p>
+                  <div className="flex flex-wrap items-center gap-4">
+                    <span className="border border-slate-200 px-4 py-3 font-mono text-xs uppercase tracking-[0.14em] text-slate-600">
+                      {solution.capacity}
+                    </span>
+                    <span className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-primary">
+                      View Line <ArrowRight size={14} />
+                    </span>
+                  </div>
+                </div>
+              </Link>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="overflow-hidden border-y border-[#e2e8f0] bg-[#f5f7fa] py-24 lg:py-[120px]">
-          <div className="mx-auto max-w-[1200px] px-5 md:px-16">
-            <div className="mb-12 flex flex-col justify-between gap-6 md:flex-row md:items-end">
-              <div>
-                <h2 className="mb-3 text-4xl font-bold">The Turnkey Lifecycle</h2>
-                <p className="leading-7 text-slate-600">
-                  Seamless transition from concept to high-volume production.
-                </p>
-              </div>
-              <div className="hidden font-mono text-sm font-bold uppercase tracking-[0.14em] text-primary md:block">
-                FLOW_STATUS: OPTIMIZED
-              </div>
-            </div>
+      <section className="bg-[#0b1626] px-5 py-24 md:px-8 lg:py-32">
+        <div className="mx-auto grid max-w-[1320px] gap-px border border-white/10 bg-white/10 md:grid-cols-3">
+          {[
+            [Factory, "Factory Execution", "Production, assembly, testing, and delivery handled through one manufacturing team."],
+            [DraftingCompass, "Layout Planning", "Machine sequence and conveyor routing are matched to the customer workshop."],
+            [Globe2, "Overseas Service", "Installation guidance and technical support for long-term production stability."],
+          ].map(([Icon, title, text]) => (
+            <article className="bg-[#07111f] p-9" key={title as string}>
+              <Icon className="mb-8 text-[#c8ff2e]" size={34} />
+              <h3 className="mb-3 text-2xl font-semibold">{title as string}</h3>
+              <p className="leading-7 text-slate-400">{text as string}</p>
+            </article>
+          ))}
+        </div>
+      </section>
 
-            <div className="grid grid-cols-2 border-l border-t border-[#e2e8f0] bg-white shadow-sm md:grid-cols-3 lg:grid-cols-6">
-              {processSteps.map(([number, title, description]) => (
-                <article
-                  className="group relative overflow-hidden border-b border-r border-[#e2e8f0] p-6 transition-colors hover:bg-[#f5f7fa]"
-                  key={number}
-                >
-                  <div className="mb-4 font-mono text-sm font-bold text-primary">{number}</div>
-                  <h3 className="mb-2 text-sm font-bold uppercase">{title}</h3>
-                  <p className="text-xs leading-5 text-slate-600">{description}</p>
-                  <div className="absolute bottom-0 left-0 h-1 w-0 bg-primary transition-all duration-500 group-hover:w-full" />
-                </article>
-              ))}
-            </div>
-            <div className="mt-12 grid grid-cols-1 gap-8 md:grid-cols-3">
-              {advantages.map(([Icon, title, description]) => (
-                <article
-                  className="border border-[#e2e8f0] bg-white p-8 shadow-sm transition-all hover:shadow-lg"
-                  key={title as string}
-                >
-                  <Icon className="mb-6 text-primary" size={40} />
-                  <h3 className="mb-3 text-2xl font-bold">{title as string}</h3>
-                  <p className="leading-7 text-slate-600">{description as string}</p>
-                </article>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        <SiteFooter />
-      </div>
+      <MainSiteFooter />
     </main>
   );
 }

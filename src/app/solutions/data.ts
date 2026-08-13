@@ -1,11 +1,11 @@
-export type SolutionStepV2 = {
+export type SolutionStep = {
   phase: string;
   title: string;
   text: string;
   image: string;
 };
 
-export type SolutionV2 = {
+export type Solution = {
   slug: string;
   code: string;
   title: string;
@@ -14,7 +14,7 @@ export type SolutionV2 = {
   videoUrl?: string;
   capacity: string;
   market: string;
-  steps: SolutionStepV2[];
+  steps: SolutionStep[];
 };
 
 const endOfLineSteps = [
@@ -38,7 +38,7 @@ const endOfLineSteps = [
   },
 ];
 
-export const solutionsV2: SolutionV2[] = [
+export const solutions: Solution[] = [
   {
     slug: "water-filling-line",
     code: "WFL",
@@ -303,6 +303,6 @@ export const solutionsV2: SolutionV2[] = [
   },
 ];
 
-export function getSolutionV2(slug: string) {
-  return solutionsV2.find((solution) => solution.slug === slug);
+export function getSolution(slug: string) {
+  return solutions.find((solution) => solution.slug === slug);
 }

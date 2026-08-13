@@ -1,125 +1,245 @@
-import { Building2, Factory, Mail, MessageCircle, Send } from "lucide-react";
-import { SiteFooter, SiteHeader } from "@/components/site-shell";
+import {
+  Building2,
+  Factory,
+  Mail,
+  MapPinned,
+  MessageCircle,
+  Phone,
+  Send,
+  ShieldCheck,
+  Wrench,
+} from "lucide-react";
+import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
 
-const heroImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA5QktW79y84gZY7_u8RUsGXIZvo4gpc7wlmxowcWODUDq-hrhjjR0RoBzt4IZ-5x42BElgIxs7oLRpQRA-CpEDCke0DVmRFC7IVd0ztk-3yTTkUJbF9FenoQx1dIo6BPJpAxIxdV0_VWasH82qB8onDBJYN0yC11NL5_pvEePWQkF1NGGhbQPQCH6TbprLTh3FIQ3aTzJXGbWhzy_v5jFy8SSFIErrbzCZSQr2N64VOAyXc79CCefow-MgeW14i4xRIsHcK8qil-4";
+const contactEmail = "benny.wang10@sokosmachinery.com";
+const contactPhone = "+86 13915678357";
+const contactPhoneLink = "+8613915678357";
 
-const facilityImage =
-  "/images/workshop/workshop-02.jpg";
+const inquiryFields = [
+  ["Full Name", "text"],
+  ["Work Email", "email"],
+  ["Company Name", "text"],
+  ["Phone / WhatsApp", "tel"],
+  ["Target Capacity (BPH)", "text"],
+  ["Destination Country", "text"],
+];
+
+const contactCards = [
+  [Mail, "Sales Inquiry", contactEmail, `mailto:${contactEmail}`],
+  [Phone, "Phone / WhatsApp", contactPhone, `https://wa.me/${contactPhoneLink.replace("+", "")}`],
+  [Building2, "Company Office", "Zhangjiagang City, Jiangsu Province, China", ""],
+  [Factory, "Manufacturing Factory", "Sokos production and assembly workshop", ""],
+];
+
+export const metadata = {
+  title: "Contact Sokos Machinery",
+  description:
+    "Steelix-inspired contact page for Sokos Machinery with technical inquiry, project support, and global service information.",
+};
 
 export default function ContactPage() {
   return (
-    <main className="bg-[#f5f7fa] text-[#131314]">
-      <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
-        <SiteHeader active="CONTACT" />
+    <main className="bg-[#07111f] text-white">
+      <MainSiteHeader active="Contact" />
 
-        <section className="relative flex h-[520px] items-center overflow-hidden border-b border-[#e2e8f0] pt-24">
-          <div className="absolute inset-0">
-            <img alt="" className="size-full object-cover opacity-95" src={heroImage} />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent" />
-          </div>
-          <div className="relative mx-auto w-full max-w-[1200px] px-5 md:px-16">
-            <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-primary">
-              Precision Engineering
-            </span>
-            <h1 className="mb-6 text-5xl font-bold uppercase md:text-7xl">
-              Get a Technical Proposal
+      <section className="relative min-h-[700px] overflow-hidden">
+        <img
+          alt="Sokos turnkey beverage line"
+          className="absolute inset-0 size-full object-cover"
+          src="/images/home/banner-production-line.png"
+        />
+        <div className="absolute inset-0 bg-[linear-gradient(90deg,rgba(7,17,31,0.78)_0%,rgba(7,17,31,0.48)_45%,rgba(7,17,31,0.08)_100%)]" />
+        <div className="relative mx-auto flex min-h-[700px] max-w-[1320px] items-center px-5 md:px-8">
+          <div className="max-w-3xl">
+            <SmallLabel dark>Technical inquiry</SmallLabel>
+            <h1 className="text-5xl font-bold uppercase leading-[0.95] tracking-[-0.035em] md:text-7xl">
+              Start Your Beverage Factory Project With Sokos
             </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              Connect with our engineering experts to design a high-capacity production line
-              tailored to your facility requirements.
+            <p className="mt-8 max-w-2xl text-lg leading-8 text-slate-200">
+              Share your product type, bottle format, and target capacity. Our engineering team
+              will prepare a matching filling line proposal and layout direction.
             </p>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="industrial-grid bg-white py-24 lg:py-[120px]">
-          <div className="mx-auto max-w-[1200px] px-5 md:px-16">
-            <div className="mb-6 border border-[#e2e8f0] bg-white p-8 shadow-sm md:p-12">
-              <div className="mb-10">
-                <h2 className="mb-2 text-4xl font-semibold">Technical Inquiry</h2>
-                <p className="text-slate-600">
-                  Complete the form below and our technical sales team will contact you within
-                  24 business hours.
-                </p>
-              </div>
-              <form className="flex flex-col gap-6">
-                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  <input className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3" placeholder="Full Name" type="text" />
-                  <input className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3" placeholder="Work Email" type="email" />
-                  <input className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3" placeholder="Company Name" type="text" />
-                  <input className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3" placeholder="Phone / WhatsApp" type="tel" />
-                  <select className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3">
-                    <option>Mineral Water</option>
-                    <option>Carbonated Soft Drinks</option>
-                    <option>Fruit Juice / Tea</option>
-                    <option>Dairy Products</option>
-                  </select>
-                  <input className="border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3" placeholder="Capacity (BPH)" type="text" />
-                </div>
-                <textarea
-                  className="min-h-32 border border-[#e2e8f0] bg-[#f5f7fa] px-4 py-3"
-                  placeholder="Technical requirements / message"
-                />
-                <button className="flex items-center justify-center gap-3 bg-primary py-5 font-mono text-xs font-bold uppercase tracking-[0.2em] text-white shadow-lg shadow-primary/10">
-                  Submit Technical Request <Send size={16} />
-                </button>
-              </form>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 border border-[#e2e8f0] bg-[#f5f7fa] p-8 md:p-10 lg:grid-cols-2">
-              <img alt="Sokos facility" className="h-full min-h-[360px] w-full object-cover" src={facilityImage} />
-              <div>
-                <h3 className="mb-8 text-3xl font-semibold">Contact Information</h3>
-                <div className="divide-y divide-[#e2e8f0] border-y border-[#e2e8f0] bg-white">
-                  {[
-                    [Mail, "Sales Inquiry", "info@sokosmachinery.com"],
-                    [MessageCircle, "WhatsApp Service", "+86 123 4567 8910"],
-                    [Building2, "Corporate Office", "High-Tech Industrial District, Shanghai"],
-                    [Factory, "Manufacturing Factory", "Sokos Industrial Park, Zhangjiagang"],
-                  ].map(([Icon, label, value]) => (
-                    <div className="flex gap-5 px-5 py-6" key={label as string}>
-                      <div className="flex size-12 shrink-0 items-center justify-center border border-[#e2e8f0] bg-[#f5f7fa] text-primary">
-                        <Icon size={22} />
-                      </div>
-                      <div>
-                        <p className="mb-1 font-mono text-xs uppercase tracking-[0.16em] text-slate-500">
-                          {label as string}
-                        </p>
-                        <p className="leading-7 text-slate-700">{value as string}</p>
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="relative overflow-hidden border-y border-[#e2e8f0] bg-[#f5f7fa] py-24">
-          <div className="mx-auto max-w-[1200px] px-5 text-center md:px-16">
-            <span className="mb-8 inline-block border border-primary/20 bg-primary/10 px-4 py-1 font-mono text-sm text-primary">
-              Live Response Network
-            </span>
-            <h2 className="mb-8 text-4xl font-bold uppercase md:text-6xl">
-              24/7 Global Technical Assistance
+      <section className="bg-[#eef3f6] px-5 py-20 text-[#07111f] md:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-8 lg:grid-cols-[1.05fr_0.95fr]">
+          <div className="bg-white p-6 shadow-sm md:p-10">
+            <SmallLabel>Request a proposal</SmallLabel>
+            <h2 className="max-w-2xl text-4xl font-semibold uppercase leading-tight md:text-5xl">
+              Tell Us Your Line Requirements
             </h2>
-            <div className="mt-14 grid grid-cols-1 gap-6 md:grid-cols-3">
-              {[
-                ["120+ Countries", "On-site service support with local engineering hubs."],
-                ["Fast Response", "Remote diagnostics and emergency parts shipping."],
-                ["Lifetime Support", "Maintenance programs for the full equipment lifecycle."],
-              ].map(([title, text]) => (
-                <article className="border border-[#e2e8f0] bg-white p-8 shadow-sm" key={title}>
-                  <h3 className="mb-4 text-2xl font-semibold text-primary">{title}</h3>
-                  <p className="text-slate-600">{text}</p>
-                </article>
-              ))}
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-600">
+              The more details you provide, the faster we can match the right washing, filling,
+              capping, labeling, packing, and palletizing configuration.
+            </p>
+            <form className="mt-10 flex flex-col gap-5">
+              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
+                {inquiryFields.map(([placeholder, type]) => (
+                  <input
+                    className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
+                    key={placeholder}
+                    placeholder={placeholder}
+                    type={type}
+                  />
+                ))}
+                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary">
+                  <option>Water Filling Line</option>
+                  <option>Carbonated Drink Filling Line</option>
+                  <option>Juice Filling Line</option>
+                  <option>Oil Filling Line</option>
+                  <option>Beer Filling Line</option>
+                  <option>Viscous Product Filling Line</option>
+                </select>
+                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary">
+                  <option>New complete line</option>
+                  <option>Single machine inquiry</option>
+                  <option>Upgrade existing line</option>
+                  <option>Spare parts / service</option>
+                </select>
+              </div>
+              <textarea
+                className="min-h-40 border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
+                placeholder="Bottle size, product type, target speed, factory layout, and other project notes"
+              />
+              <button className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-5 font-mono text-xs uppercase tracking-[0.18em] text-white transition hover:bg-[#c8ff2e] hover:text-[#07111f]" type="button">
+                Submit Technical Request <Send size={16} />
+              </button>
+            </form>
+          </div>
+
+          <div className="grid gap-5">
+            <div className="relative min-h-[340px] overflow-hidden bg-[#10243a] p-8 text-white">
+              <img
+                alt="Sokos factory workshop"
+                className="absolute inset-0 size-full object-cover opacity-45"
+                src="/images/home/industrial-workshop-wide.jpg"
+              />
+              <div className="absolute inset-0 bg-[#07111f]/45" />
+              <div className="relative flex h-full flex-col justify-between">
+                <SmallLabel dark>Fast response</SmallLabel>
+                <div>
+                  <h3 className="text-4xl font-semibold uppercase leading-tight">
+                    Engineering Support For Global Installations
+                  </h3>
+                  <p className="mt-5 text-sm leading-7 text-slate-300">
+                    Remote diagnostics, project communication, installation guidance, and spare
+                    parts support for long-term stable operation.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="grid grid-cols-1 gap-px overflow-hidden bg-slate-200 md:grid-cols-2">
+              {contactCards.map(([Icon, label, value, href]) => {
+                const content = (
+                  <article className="min-h-[165px] bg-white p-6">
+                    <Icon className="mb-7 text-primary" size={28} />
+                    <p className="font-mono text-xs uppercase tracking-[0.18em] text-slate-500">
+                      {label as string}
+                    </p>
+                    <p className="mt-3 text-sm leading-6 text-slate-700">{value as string}</p>
+                  </article>
+                );
+
+                return href ? (
+                  <a href={href as string} key={label as string} rel="noreferrer" target={href.toString().startsWith("http") ? "_blank" : undefined}>
+                    {content}
+                  </a>
+                ) : (
+                  <div key={label as string}>{content}</div>
+                );
+              })}
             </div>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <SiteFooter />
-      </div>
+      <section className="px-5 py-20 md:px-8 lg:py-28">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="mb-12 flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
+            <div>
+              <SmallLabel dark>Project process</SmallLabel>
+              <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-tight md:text-5xl">
+                From First Inquiry To Factory Acceptance
+              </h2>
+            </div>
+            <ArrowButton dark href="/solutions" label="View solutions" />
+          </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-4">
+            {[
+              ["01", "Requirement Check", "Product, bottle, capacity, and plant layout are confirmed."],
+              ["02", "Line Configuration", "Main machines and auxiliary systems are matched to the target output."],
+              ["03", "Technical Proposal", "Sokos prepares layout, equipment list, and commercial proposal."],
+              ["04", "Delivery Support", "Production, testing, shipping, installation, and after-sales response."],
+            ].map(([step, title, text]) => (
+              <article className="border border-white/10 bg-[#10243a] p-7" key={step}>
+                <p className="font-mono text-4xl font-semibold text-[#c8ff2e]">{step}</p>
+                <h3 className="mt-10 text-xl font-semibold uppercase">{title}</h3>
+                <p className="mt-4 text-sm leading-7 text-slate-300">{text}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-20 text-[#07111f] md:px-8 lg:py-28">
+        <div className="mx-auto grid max-w-[1320px] grid-cols-1 gap-8 lg:grid-cols-[0.78fr_1.22fr] lg:items-center">
+          <div>
+            <SmallLabel>Global service</SmallLabel>
+            <h2 className="text-4xl font-semibold uppercase leading-tight md:text-5xl">
+              Support That Follows The Equipment Lifecycle
+            </h2>
+            <p className="mt-6 max-w-xl text-sm leading-7 text-slate-600">
+              Sokos supports customers from layout consultation to commissioning and maintenance,
+              helping complete beverage lines stay stable after installation.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+            {[
+              [MapPinned, "Overseas Projects", "References across the Middle East, Africa, Southeast Asia, Europe, and the Americas."],
+              [Wrench, "Spare Parts", "Structured replacement parts support for long-term operation and planned maintenance."],
+              [ShieldCheck, "Remote Support", "Technical communication for operation checks, troubleshooting, and service planning."],
+            ].map(([Icon, title, text]) => (
+              <article className="bg-[#eef3f6] p-7" key={title as string}>
+                <Icon className="mb-8 text-primary" size={30} />
+                <h3 className="text-xl font-semibold uppercase">{title as string}</h3>
+                <p className="mt-4 text-sm leading-6 text-slate-600">{text as string}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="relative overflow-hidden px-5 py-24 md:px-8">
+        <img
+          alt="Sokos engineering design"
+          className="absolute inset-0 size-full object-cover opacity-30"
+          src="/images/about-workshop/engineering-design.jpg"
+        />
+        <div className="absolute inset-0 bg-[#07111f]/82" />
+        <div className="relative mx-auto flex max-w-[1320px] flex-col justify-between gap-8 lg:flex-row lg:items-center">
+          <div>
+            <SmallLabel dark>Direct contact</SmallLabel>
+            <h2 className="max-w-3xl text-4xl font-semibold uppercase leading-tight md:text-5xl">
+              Send Your Bottle Drawing, Capacity Target, Or Factory Layout
+            </h2>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <ArrowButton dark href={`mailto:${contactEmail}`} label="Email us" />
+            <a
+              className="inline-flex items-center gap-3 border border-white/20 px-6 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white hover:border-[#c8ff2e] hover:text-[#c8ff2e]"
+              href={`https://wa.me/${contactPhoneLink.replace("+", "")}`}
+              rel="noreferrer"
+              target="_blank"
+            >
+              WhatsApp <MessageCircle size={14} />
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <MainSiteFooter />
     </main>
   );
 }

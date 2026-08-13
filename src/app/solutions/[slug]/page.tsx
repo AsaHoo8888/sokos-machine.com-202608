@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2, Play } from "lucide-react";
-import { ArrowButton, HomeV2Footer, HomeV2Header, SmallLabel } from "@/components/home-v2-shell";
-import { getSolutionV2, solutionsV2 } from "../data";
+import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { getSolution, solutions } from "../data";
 
 type SolutionPageProps = {
   params: Promise<{
@@ -11,14 +11,14 @@ type SolutionPageProps = {
 };
 
 export function generateStaticParams() {
-  return solutionsV2.map((solution) => ({
+  return solutions.map((solution) => ({
     slug: solution.slug,
   }));
 }
 
 export async function generateMetadata({ params }: SolutionPageProps) {
   const { slug } = await params;
-  const solution = getSolutionV2(slug);
+  const solution = getSolution(slug);
 
   if (!solution) return {};
 
@@ -28,15 +28,15 @@ export async function generateMetadata({ params }: SolutionPageProps) {
   };
 }
 
-export default async function SolutionsV2DetailPage({ params }: SolutionPageProps) {
+export default async function SolutionDetailPage({ params }: SolutionPageProps) {
   const { slug } = await params;
-  const solution = getSolutionV2(slug);
+  const solution = getSolution(slug);
 
   if (!solution) notFound();
 
   return (
     <main className="bg-[#07111f] text-white">
-      <HomeV2Header active="Solutions" />
+      <MainSiteHeader active="Solutions" />
 
       <section className="relative min-h-[760px] overflow-hidden">
         <img alt={solution.title} className="absolute inset-0 size-full object-cover" src={solution.image} />
@@ -44,7 +44,7 @@ export default async function SolutionsV2DetailPage({ params }: SolutionPageProp
         <div className="relative mx-auto flex min-h-[760px] max-w-[1320px] flex-col justify-end px-5 pb-24 pt-24 md:px-8">
           <Link
             className="mb-12 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#c8ff2e]"
-            href="/solutions-v2"
+            href="/solutions"
           >
             <ArrowLeft size={16} />
             Back to solutions
@@ -55,7 +55,7 @@ export default async function SolutionsV2DetailPage({ params }: SolutionPageProp
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">{solution.summary}</p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <ArrowButton dark href="/contact-v2" label="Request Layout" />
+            <ArrowButton dark href="/contact" label="Request Layout" />
             {solution.videoUrl ? (
               <a
                 className="inline-flex items-center gap-3 border border-white/20 px-6 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white hover:border-[#c8ff2e] hover:text-[#c8ff2e]"
@@ -154,14 +154,14 @@ export default async function SolutionsV2DetailPage({ params }: SolutionPageProp
           </div>
           <Link
             className="inline-flex items-center gap-3 bg-[#c8ff2e] px-7 py-5 font-mono text-xs uppercase tracking-[0.18em] text-[#07111f]"
-            href="/contact-v2"
+            href="/contact"
           >
             Contact Engineering <ArrowRight size={14} />
           </Link>
         </div>
       </section>
 
-      <HomeV2Footer />
+      <MainSiteFooter />
     </main>
   );
 }

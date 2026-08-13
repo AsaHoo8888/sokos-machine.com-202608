@@ -1,8 +1,8 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
-import { ArrowButton, HomeV2Footer, HomeV2Header, SmallLabel } from "@/components/home-v2-shell";
-import { getProductCategoryV2, productCategoriesV2 } from "../data";
+import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { getProductCategory, productCategories } from "../data";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -11,14 +11,14 @@ type CategoryPageProps = {
 };
 
 export function generateStaticParams() {
-  return productCategoriesV2.map((category) => ({
+  return productCategories.map((category) => ({
     category: category.slug,
   }));
 }
 
 export async function generateMetadata({ params }: CategoryPageProps) {
   const { category: slug } = await params;
-  const category = getProductCategoryV2(slug);
+  const category = getProductCategory(slug);
 
   if (!category) return {};
 
@@ -28,15 +28,15 @@ export async function generateMetadata({ params }: CategoryPageProps) {
   };
 }
 
-export default async function ProductsV2CategoryPage({ params }: CategoryPageProps) {
+export default async function ProductCategoryPage({ params }: CategoryPageProps) {
   const { category: slug } = await params;
-  const category = getProductCategoryV2(slug);
+  const category = getProductCategory(slug);
 
   if (!category) notFound();
 
   return (
     <main className="bg-[#07111f] text-white">
-      <HomeV2Header active="Products" />
+      <MainSiteHeader active="Products" />
 
       <section className="relative overflow-hidden border-b border-white/10 bg-[#07111f]">
         <div className="absolute inset-y-0 right-0 w-full opacity-25 lg:w-1/2">
@@ -46,7 +46,7 @@ export default async function ProductsV2CategoryPage({ params }: CategoryPagePro
         <div className="relative mx-auto min-h-[640px] max-w-[1320px] px-5 py-24 md:px-8 lg:py-32">
           <Link
             className="mb-12 inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.18em] text-[#c8ff2e]"
-            href="/products-v2"
+            href="/products"
           >
             <ArrowLeft size={16} />
             Back to products
@@ -57,7 +57,7 @@ export default async function ProductsV2CategoryPage({ params }: CategoryPagePro
           </h1>
           <p className="mt-8 max-w-3xl text-lg leading-8 text-slate-300">{category.description}</p>
           <div className="mt-10 flex flex-wrap gap-4">
-            <ArrowButton dark href="/contact-v2" label="Get Quote" />
+            <ArrowButton dark href="/contact" label="Get Quote" />
             <span className="inline-flex items-center border border-white/15 px-6 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white">
               {category.metric}
             </span>
@@ -115,13 +115,13 @@ export default async function ProductsV2CategoryPage({ params }: CategoryPagePro
                   <div className="mt-auto flex flex-wrap items-center justify-between gap-4 border-t border-slate-200 pt-5">
                     <Link
                       className="inline-flex items-center gap-2 font-mono text-xs uppercase tracking-[0.16em] text-primary"
-                      href={`/products-v2/${category.slug}/${product.slug}`}
+                      href={`/products/${category.slug}/${product.slug}`}
                     >
                       View Details <ArrowRight size={14} />
                     </Link>
                     <Link
                       className="bg-[#07111f] px-5 py-3 font-mono text-xs uppercase tracking-[0.16em] text-white"
-                      href="/contact-v2"
+                      href="/contact"
                     >
                       Inquiry
                     </Link>
@@ -133,7 +133,7 @@ export default async function ProductsV2CategoryPage({ params }: CategoryPagePro
         </div>
       </section>
 
-      <HomeV2Footer />
+      <MainSiteFooter />
     </main>
   );
 }

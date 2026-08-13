@@ -1,196 +1,143 @@
 import Link from "next/link";
-import { ArrowRight, Factory, ShieldCheck, Wrench } from "lucide-react";
-import { SectionLabel } from "@/components/page-primitives";
-import { SiteFooter, SiteHeader } from "@/components/site-shell";
-
-const heroImage =
-  "https://lh3.googleusercontent.com/aida-public/AB6AXuA5QktW79y84gZY7_u8RUsGXIZvo4gpc7wlmxowcWODUDq-hrhjjR0RoBzt4IZ-5x42BElgIxs7oLRpQRA-CpEDCke0DVmRFC7IVd0ztk-3yTTkUJbF9FenoQx1dIo6BPJpAxIxdV0_VWasH82qB8onDBJYN0yC11NL5_pvEePWQkF1NGGhbQPQCH6TbprLTh3FIQ3aTzJXGbWhzy_v5jFy8SSFIErrbzCZSQr2N64VOAyXc79CCefow-MgeW14i4xRIsHcK8qil-4";
-
-const productImage = "/images/product-filling-machine.jpg";
-
-const categories = [
-  [
-    "Water Treatment",
-    "Advanced filtration, RO purification, and sterilization modules.",
-    "WTS-X800",
-    "CAP: 2,000L/H",
-    "/images/products/auxiliary/water-treatment.png",
-    "/products/auxiliary/water-treatment-system",
-  ],
-  [
-    "Blending",
-    "Mixing and preparation systems for juice, tea, and functional drinks.",
-    "MIX-PRO",
-    "PLC: SIEMENS",
-    "/images/products/auxiliary/juice-blending-system.png",
-    "/products/auxiliary/juice-blending-system",
-  ],
-  [
-    "Blow Molding Machine",
-    "Automated PET stretch-blow solutions for stable bottle forming.",
-    "BBM-V4",
-    "MAX: 12,000 BPH",
-    "/images/products/auxiliary/blow-molding-machine.png",
-    "/products/auxiliary/fully-automatic-blow-molding-machine",
-  ],
-  [
-    "Filling Machine",
-    "Rotary rinsing, filling, and capping machines for water, CSD, juice, beer, and oil.",
-    "FILLING",
-    "MULTI SERIES",
-    "/images/products/water-filling-60-head.jpg",
-    "/products/filling-machine",
-  ],
-  [
-    "Labeling Machine",
-    "Rotary and linear labeling systems for self-adhesive, OPP, and shrink sleeve labels.",
-    "LBL-SERIES",
-    "4 TYPES",
-    "/images/products/auxiliary/rotary-opp-labeler.png",
-    "/products/labeling-machine",
-  ],
-  [
-    "Packaging Machine",
-    "Shrink wrapping and carton packing for finished products.",
-    "PKG-MAX",
-    "PLC: SIEMENS",
-    "/images/products/auxiliary/shrink-wrap-machine.png",
-    "/products/auxiliary/shrink-wrap-machine",
-  ],
-  [
-    "Palletizing Machine",
-    "Automatic stacking systems for cartons, trays, and wrapped packs.",
-    "PAL-AUTO",
-    "STACK: AUTO",
-    "/images/products/auxiliary/palletizer.png",
-    "/products/auxiliary/palletizer",
-  ],
-  [
-    "Depalletizer",
-    "Automatic empty bottle or can unloading for high-speed production lines.",
-    "DEP-AUTO",
-    "LINE: AUTO",
-    "/images/products/auxiliary/depalletizer.png",
-    "/products/auxiliary/depalletizer",
-  ],
-];
+import { ArrowRight, Factory, Gauge, Layers3 } from "lucide-react";
+import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { fillingSubCategories, productCategories } from "./data";
 
 export default function ProductsPage() {
   return (
-    <main className="bg-[#f5f7fa] text-[#131314]">
-      <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
-        <SiteHeader active="PRODUCTS" />
+    <main className="bg-[#07111f] text-white">
+      <MainSiteHeader active="Products" />
 
-        <section className="relative flex h-[520px] items-center overflow-hidden border-b border-[#e2e8f0] pt-24">
-          <div className="absolute inset-0">
-            <img alt="" className="size-full object-cover opacity-95" src={heroImage} />
-            <div className="absolute inset-0 bg-gradient-to-r from-white/80 via-white/20 to-transparent" />
+      <section className="relative min-h-[760px] overflow-hidden">
+        <img
+          alt="Sokos production line"
+          className="absolute inset-0 size-full object-cover"
+          src="/images/home/banner-production-line.png"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#07111f]/95 via-[#07111f]/70 to-[#07111f]/20" />
+        <div className="relative mx-auto flex min-h-[760px] max-w-[1320px] flex-col justify-end px-5 pb-24 pt-24 md:px-8">
+          <SmallLabel dark>Product Architecture</SmallLabel>
+          <h1 className="max-w-5xl text-5xl font-semibold uppercase leading-[0.95] md:text-8xl">
+            Machinery Built Around Complete Lines
+          </h1>
+          <div className="mt-8 flex max-w-3xl flex-col gap-7 md:flex-row md:items-end md:justify-between">
+            <p className="text-lg leading-8 text-slate-300">
+              Explore Sokos equipment by production function, from purified water preparation
+              through filling, labeling, packaging, palletizing, and complete line automation.
+            </p>
+            <ArrowButton dark href="/contact" label="Plan Project" />
           </div>
-          <div className="relative mx-auto w-full max-w-[1200px] px-5 md:px-16">
-            <span className="mb-4 block font-mono text-xs uppercase tracking-[0.3em] text-primary">
-              Machinery Portfolio
-            </span>
-            <h1 className="mb-6 text-5xl font-bold uppercase md:text-7xl">
-              Industrial Beverage Solutions
-            </h1>
-            <p className="max-w-2xl text-lg leading-8 text-slate-600">
-              High-precision engineering for global manufacturing. Sokos provides turnkey
-              automation solutions for the complete beverage production lifecycle.
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-24 text-[#07111f] md:px-8 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="mb-14 grid gap-8 lg:grid-cols-[0.75fr_1fr] lg:items-end">
+            <div>
+              <SmallLabel>Product Categories</SmallLabel>
+              <h2 className="text-4xl font-semibold uppercase md:text-6xl">
+                Factory Modules
+              </h2>
+            </div>
+            <p className="max-w-2xl text-base leading-7 text-slate-600">
+              Each product family connects to the next stage of the plant, creating a clean path
+              from process water and bottles to packed pallets ready for shipment.
             </p>
           </div>
-        </section>
 
-        <section className="bg-[#f5f7fa] py-24 lg:py-[120px]">
-          <div className="mx-auto max-w-[1200px] px-5 md:px-16">
-            <div className="mb-16 flex flex-col justify-between gap-6 border-b border-[#e2e8f0] pb-8 md:flex-row md:items-end">
-              <div>
-                <SectionLabel>Machinery Portfolio</SectionLabel>
-                <h2 className="text-4xl font-semibold uppercase">Precision Systems</h2>
-              </div>
-              <p className="hidden font-mono text-sm uppercase tracking-[0.16em] text-slate-500 md:block">
-                ISO 9001:2015 certified manufacturing
-              </p>
-            </div>
-
-            <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-              {categories.map(([title, description, code, spec, image, href]) => (
-                <article
-                  className="group flex flex-col border border-[#e2e8f0] bg-white shadow-sm transition-all hover:border-primary hover:shadow-lg"
-                  key={title}
-                >
-                  <div className="relative aspect-[16/9] overflow-hidden border-b border-[#e2e8f0]">
+          <div className="grid gap-px overflow-hidden border border-slate-200 bg-slate-200 md:grid-cols-2 xl:grid-cols-3">
+            {productCategories.map((category) => (
+              <Link
+                className="group bg-white"
+                href={`/products/${category.slug}`}
+                key={category.slug}
+              >
+                <article className="flex min-h-[460px] flex-col">
+                  <div className="relative aspect-[16/10] overflow-hidden bg-slate-100">
                     <img
-                      alt={title}
-                      className="size-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      src={image}
+                      alt={category.title}
+                      className="size-full object-contain p-6 transition duration-700 group-hover:scale-105"
+                      src={category.image}
                     />
-                    <div className="absolute left-4 top-4 bg-primary px-2 py-1 font-mono text-[10px] text-white">
-                      {code}
+                    <div className="absolute left-5 top-5 bg-primary px-3 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-white">
+                      {category.code}
                     </div>
                   </div>
-                  <div className="flex flex-1 flex-col p-8">
-                    <h3 className="mb-3 text-2xl font-semibold transition-colors group-hover:text-primary">
-                      {title}
-                    </h3>
-                    <p className="mb-8 text-sm leading-6 text-slate-600">{description}</p>
-                    <div className="mt-auto flex items-center justify-between border-t border-[#e2e8f0] pt-5">
-                      <span className="font-mono text-xs text-primary">{spec}</span>
-                      <Link href={href}>
-                        <ArrowRight
-                          className="text-primary transition-transform group-hover:translate-x-1"
-                          size={18}
-                        />
-                      </Link>
+                  <div className="flex flex-1 flex-col p-7">
+                    <p className="mb-3 font-mono text-xs uppercase tracking-[0.18em] text-primary">
+                      {category.eyebrow}
+                    </p>
+                    <h3 className="mb-4 text-2xl font-semibold">{category.title}</h3>
+                    <p className="mb-8 text-sm leading-6 text-slate-600">
+                      {category.description}
+                    </p>
+                    <div className="mt-auto flex items-center justify-between border-t border-slate-200 pt-5">
+                      <span className="font-mono text-xs uppercase tracking-[0.14em] text-slate-500">
+                        {category.metric}
+                      </span>
+                      <span className="grid size-10 place-items-center bg-[#07111f] text-white transition group-hover:bg-[#c8ff2e] group-hover:text-[#07111f]">
+                        <ArrowRight size={16} />
+                      </span>
                     </div>
                   </div>
                 </article>
-              ))}
-            </div>
+              </Link>
+            ))}
           </div>
-        </section>
+        </div>
+      </section>
 
-        <section className="bg-white py-24 lg:py-[120px]">
-          <div className="mx-auto grid max-w-[1200px] grid-cols-1 items-center gap-14 px-5 md:px-16 lg:grid-cols-2">
+      <section className="bg-[#0b1626] px-5 py-24 md:px-8 lg:py-32">
+        <div className="mx-auto max-w-[1320px]">
+          <div className="mb-12 grid gap-8 lg:grid-cols-[0.7fr_1fr] lg:items-end">
             <div>
-              <SectionLabel>Core Competencies</SectionLabel>
-              <h2 className="mb-8 text-4xl font-bold uppercase">The Engineering Advantage.</h2>
-              <div className="flex flex-col gap-8">
-                {[
-                  [Factory, "Factory Direct Execution"],
-                  [ShieldCheck, "CE/ISO International Certification"],
-                  [Wrench, "24/7 Global Technical Support"],
-                ].map(([Icon, title]) => (
-                  <div className="flex gap-6" key={title as string}>
-                    <div className="flex size-12 shrink-0 items-center justify-center border border-[#e2e8f0] bg-[#f5f7fa] text-primary">
-                      <Icon size={22} />
-                    </div>
-                    <div>
-                      <h3 className="mb-2 font-bold">{title as string}</h3>
-                      <p className="text-sm leading-6 text-slate-600">
-                        Manufacturing depth, certified quality, and fast support throughout the
-                        machine lifecycle.
-                      </p>
-                    </div>
-                  </div>
-                ))}
-              </div>
+              <SmallLabel dark>Filling Machine</SmallLabel>
+              <h2 className="text-4xl font-semibold uppercase md:text-6xl">
+                Four Core Filling Families
+              </h2>
             </div>
-            <div className="border border-[#e2e8f0] bg-white p-4 shadow-sm">
-              <div className="relative aspect-square overflow-hidden bg-[#f5f7fa]">
-                <img alt="Engineering system" className="size-full object-cover" src={productImage} />
-                <div className="absolute bottom-8 left-8">
-                  <div className="mb-1 font-mono text-5xl font-bold text-primary">99.8%</div>
-                  <div className="font-mono text-xs font-bold uppercase tracking-[0.2em]">
-                    Operational uptime
-                  </div>
-                </div>
-              </div>
-            </div>
+            <p className="max-w-2xl text-slate-300">
+              Water, carbonated beverage, juice, and glass bottle beer machines are organized
+              under Filling Machine for faster project matching.
+            </p>
           </div>
-        </section>
 
-        <SiteFooter />
-      </div>
+          <div className="grid gap-5 md:grid-cols-2">
+            {fillingSubCategories.map((item) => (
+              <article
+                className="grid gap-6 border border-white/10 bg-white/[0.03] p-5 md:grid-cols-[220px_1fr]"
+                key={item.title}
+              >
+                <div className="aspect-[4/3] bg-white">
+                  <img alt={item.title} className="size-full object-contain p-4" src={item.image} />
+                </div>
+                <div className="flex flex-col justify-center">
+                  <h3 className="mb-3 text-2xl font-semibold">{item.title}</h3>
+                  <p className="line-clamp-3 text-sm leading-6 text-slate-400">{item.text}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white px-5 py-20 text-[#07111f] md:px-8">
+        <div className="mx-auto grid max-w-[1320px] gap-px border border-slate-200 bg-slate-200 md:grid-cols-3">
+          {[
+            [Factory, "Factory Built", "Machinery manufactured and assembled in Sokos workshops."],
+            [Layers3, "Line Integrated", "Every module is selected around the full line workflow."],
+            [Gauge, "Capacity Matched", "Model options are selected by bottle size and target output."],
+          ].map(([Icon, title, text]) => (
+            <article className="bg-white p-9" key={title as string}>
+              <Icon className="mb-8 text-primary" size={34} />
+              <h3 className="mb-3 text-2xl font-semibold">{title as string}</h3>
+              <p className="leading-7 text-slate-600">{text as string}</p>
+            </article>
+          ))}
+        </div>
+      </section>
+
+      <MainSiteFooter />
     </main>
   );
 }
