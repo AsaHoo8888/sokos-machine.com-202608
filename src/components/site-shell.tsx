@@ -207,9 +207,9 @@ export function SiteFooter() {
             © 2024 Sokos Machinery. Precision engineering for industrial excellence.
           </p>
           <div className="flex gap-6 font-mono text-[10px] uppercase tracking-[0.2em] md:gap-8">
-            {["Privacy Policy", "Terms of Service", "Compliance"].map((item) => (
-              <a className="text-slate-600 transition-colors hover:text-[#131314]" href="#" key={item}>
-                {item}
+            {[["Privacy Policy", "/privacy-policy"], ["Terms of Service", "#"], ["Compliance", "#"]].map(([label, href]) => (
+              <a className="text-slate-600 transition-colors hover:text-[#131314]" href={href} key={label}>
+                {label}
               </a>
             ))}
           </div>

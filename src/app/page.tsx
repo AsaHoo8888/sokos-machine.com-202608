@@ -5,7 +5,6 @@ import {
   CalendarDays,
   CheckCircle2,
   ChevronRight,
-  Globe2,
   HeartHandshake,
   MapPin,
   MapPinned,
@@ -13,6 +12,7 @@ import {
   Sparkles,
   Users,
 } from "lucide-react";
+import { MainSiteFooter } from "@/components/main-site-shell";
 
 const solutions = [
   {
@@ -785,29 +785,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <footer className="bg-[#07111f] px-5 py-12 md:px-8">
-        <div className="mx-auto flex max-w-[1320px] flex-col justify-between gap-8 border-t border-white/10 pt-10 md:flex-row md:items-center">
-          <div>
-            <img
-              alt="Sokos Machinery"
-              className="h-14 w-auto"
-              src="/images/home/sokos-logo-white.png"
-            />
-            <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
-              Complete beverage filling and packaging lines for global factories.
-            </p>
-          </div>
-          <div className="flex flex-col gap-3 sm:flex-row">
-            <ArrowButton dark href="/contact" label="Contact Us" />
-            <Link
-              className="inline-flex items-center gap-3 border border-white/20 px-6 py-4 font-mono text-xs uppercase tracking-[0.18em] text-white hover:border-[#c8ff2e] hover:text-[#c8ff2e]"
-              href="/"
-            >
-              Original Home <Globe2 size={14} />
-            </Link>
-          </div>
-        </div>
-      </footer>
+      <MainSiteFooter />
     </main>
   );
 }

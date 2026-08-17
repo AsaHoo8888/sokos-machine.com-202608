@@ -88,6 +88,12 @@ export function MainSiteFooter() {
           <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
             Complete beverage filling and packaging lines for global factories.
           </p>
+          <Link
+            className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.16em] text-slate-400 transition hover:text-[#c8ff2e]"
+            href="/privacy-policy"
+          >
+            Privacy Policy
+          </Link>
         </div>
         <div className="flex flex-col gap-3 sm:flex-row">
           <ArrowButton dark href="/contact" label="Contact Us" />
