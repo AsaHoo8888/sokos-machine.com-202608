@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Play, Send, ShieldCheck, SlidersHorizontal, Wrench } from "lucide-react";
+import { InquiryForm } from "@/components/inquiry-form";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 import { auxiliaryProducts, getAuxiliaryProduct } from "../data";
@@ -226,18 +227,19 @@ export default async function AuxiliaryProductPage({ params }: AuxiliaryProductP
                     </span>
                   </div>
                 </div>
-                <form className="flex flex-col gap-5">
-                  <input className="border border-[#e2e8f0] p-3" defaultValue={product.title} />
-                  <input className="border border-[#e2e8f0] p-3" placeholder="Name" type="text" />
-                  <input className="border border-[#e2e8f0] p-3" placeholder="Business email" type="email" />
+                <InquiryForm className="flex flex-col gap-5" source="auxiliary-product-detail">
+                  <input className="border border-[#e2e8f0] p-3" defaultValue={product.title} name="product" readOnly />
+                  <input className="border border-[#e2e8f0] p-3" name="name" placeholder="Name" required type="text" />
+                  <input className="border border-[#e2e8f0] p-3" name="email" placeholder="Business email" required type="email" />
                   <textarea
                     className="min-h-32 border border-[#e2e8f0] p-3"
+                    name="message"
                     placeholder="Bottle size, package type, and target output"
                   />
                   <button className="bg-primary py-5 font-mono text-sm uppercase tracking-[0.2em] text-white">
                     Submit Inquiry
                   </button>
-                </form>
+                </InquiryForm>
               </div>
             </div>
           </div>

@@ -69,6 +69,7 @@ export interface Config {
   collections: {
     users: User;
     pages: Page;
+    inquiries: Inquiry;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -78,6 +79,7 @@ export interface Config {
   collectionsSelect: {
     users: UsersSelect<false> | UsersSelect<true>;
     pages: PagesSelect<false> | PagesSelect<true>;
+    inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -163,6 +165,27 @@ export interface Page {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries".
+ */
+export interface Inquiry {
+  id: number;
+  name: string;
+  email: string;
+  company?: string | null;
+  phone?: string | null;
+  capacity?: string | null;
+  country?: string | null;
+  product?: string | null;
+  inquiryType?: string | null;
+  message?: string | null;
+  source: string;
+  status: 'new' | 'contacted' | 'closed';
+  emailStatus: 'not-configured' | 'sent' | 'failed';
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -192,6 +215,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'pages';
         value: number | Page;
+      } | null)
+    | ({
+        relationTo: 'inquiries';
+        value: number | Inquiry;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -268,6 +295,26 @@ export interface PagesSelect<T extends boolean = true> {
   status?: T;
   seoTitle?: T;
   seoDescription?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "inquiries_select".
+ */
+export interface InquiriesSelect<T extends boolean = true> {
+  name?: T;
+  email?: T;
+  company?: T;
+  phone?: T;
+  capacity?: T;
+  country?: T;
+  product?: T;
+  inquiryType?: T;
+  message?: T;
+  source?: T;
+  status?: T;
+  emailStatus?: T;
   updatedAt?: T;
   createdAt?: T;
 }

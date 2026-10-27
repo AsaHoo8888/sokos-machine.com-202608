@@ -1,4 +1,5 @@
 import { Send, ShieldCheck, SlidersHorizontal, Waves } from "lucide-react";
+import { InquiryForm } from "@/components/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 
 const productImage = "/images/product-filling-machine.jpg";
@@ -151,13 +152,14 @@ export default function SingleProductPage() {
                     </span>
                   </div>
                 </div>
-                <form className="flex flex-col gap-5">
+                <InquiryForm className="flex flex-col gap-5" source="water-filling-monoblock">
+                  <input name="product" type="hidden" value="3-in-1 Water Filling Monoblock" />
                   <div className="grid grid-cols-2 gap-4">
-                    <input className="border border-[#e2e8f0] p-3" placeholder="Name" type="text" />
-                    <input className="border border-[#e2e8f0] p-3" placeholder="Company" type="text" />
+                    <input className="border border-[#e2e8f0] p-3" name="name" placeholder="Name" required type="text" />
+                    <input className="border border-[#e2e8f0] p-3" name="company" placeholder="Company" type="text" />
                   </div>
-                  <input className="border border-[#e2e8f0] p-3" placeholder="Business email" type="email" />
-                  <select className="border border-[#e2e8f0] p-3">
+                  <input className="border border-[#e2e8f0] p-3" name="email" placeholder="Business email" required type="email" />
+                  <select className="border border-[#e2e8f0] p-3" name="capacity">
                     <option>2,000 - 4,000 BPH</option>
                     <option>4,000 - 6,000 BPH</option>
                     <option>6,000 - 8,000 BPH</option>
@@ -166,7 +168,7 @@ export default function SingleProductPage() {
                   <button className="bg-primary py-5 font-mono text-sm uppercase tracking-[0.2em] text-white">
                     Submit Inquiry
                   </button>
-                </form>
+                </InquiryForm>
               </div>
             </div>
           </div>

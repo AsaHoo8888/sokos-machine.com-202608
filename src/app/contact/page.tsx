@@ -10,18 +10,24 @@ import {
   Wrench,
 } from "lucide-react";
 import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
+import { InquiryForm } from "@/components/inquiry-form";
 
 const contactEmail = "benny.wang10@sokosmachinery.com";
 const contactPhone = "+86 13915678357";
 const contactPhoneLink = "+8613915678357";
 
-const inquiryFields = [
-  ["Full Name", "text"],
-  ["Work Email", "email"],
-  ["Company Name", "text"],
-  ["Phone / WhatsApp", "tel"],
-  ["Target Capacity (BPH)", "text"],
-  ["Destination Country", "text"],
+const inquiryFields: Array<{
+  name: string;
+  placeholder: string;
+  required: boolean;
+  type: "email" | "tel" | "text";
+}> = [
+  { name: "name", placeholder: "Full Name", required: true, type: "text" },
+  { name: "email", placeholder: "Work Email", required: true, type: "email" },
+  { name: "company", placeholder: "Company Name", required: false, type: "text" },
+  { name: "phone", placeholder: "Phone / WhatsApp", required: false, type: "tel" },
+  { name: "capacity", placeholder: "Target Capacity (BPH)", required: false, type: "text" },
+  { name: "country", placeholder: "Destination Country", required: false, type: "text" },
 ];
 
 const contactCards = [
@@ -74,17 +80,19 @@ export default function ContactPage() {
               The more details you provide, the faster we can match the right washing, filling,
               capping, labeling, packing, and palletizing configuration.
             </p>
-            <form className="mt-10 flex flex-col gap-5">
+            <InquiryForm className="mt-10 flex flex-col gap-5" source="contact-page">
               <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                {inquiryFields.map(([placeholder, type]) => (
+                {inquiryFields.map(({ name, placeholder, required, type }) => (
                   <input
                     className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
                     key={placeholder}
+                    name={name}
                     placeholder={placeholder}
+                    required={required}
                     type={type}
                   />
                 ))}
-                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary">
+                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary" name="product">
                   <option>Water Filling Line</option>
                   <option>Carbonated Drink Filling Line</option>
                   <option>Juice Filling Line</option>
@@ -92,7 +100,7 @@ export default function ContactPage() {
                   <option>Beer Filling Line</option>
                   <option>Viscous Product Filling Line</option>
                 </select>
-                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary">
+                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary" name="inquiryType">
                   <option>New complete line</option>
                   <option>Single machine inquiry</option>
                   <option>Upgrade existing line</option>
@@ -101,12 +109,13 @@ export default function ContactPage() {
               </div>
               <textarea
                 className="min-h-40 border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
+                name="message"
                 placeholder="Bottle size, product type, target speed, factory layout, and other project notes"
               />
-              <button className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-5 font-mono text-xs uppercase tracking-[0.18em] text-white transition hover:bg-[#c8ff2e] hover:text-[#07111f]" type="button">
+              <button className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-5 font-mono text-xs uppercase tracking-[0.18em] text-white transition hover:bg-[#c8ff2e] hover:text-[#07111f]" type="submit">
                 Submit Technical Request <Send size={16} />
               </button>
-            </form>
+            </InquiryForm>
           </div>
 
           <div className="grid gap-5">

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Send, ShieldCheck, Sparkles } from "lucide-react";
+import { InquiryForm } from "@/components/inquiry-form";
 import { MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
 import { getProductCategory, getProduct, productCategories } from "../../data";
 
@@ -195,18 +196,19 @@ export default async function ProductDetailPage({ params }: ProductPageProps) {
               ISO / CE production support
             </p>
           </div>
-          <form className="grid gap-4">
-            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" defaultValue={product.model} />
-            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" placeholder="Name" />
-            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" placeholder="Business email" type="email" />
+          <InquiryForm className="grid gap-4" source="product-detail">
+            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" defaultValue={product.model} name="product" readOnly />
+            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" name="name" placeholder="Name" required />
+            <input className="border border-white/10 bg-white px-4 py-4 text-[#07111f]" name="email" placeholder="Business email" required type="email" />
             <textarea
               className="min-h-32 border border-white/10 bg-white px-4 py-4 text-[#07111f]"
+              name="message"
               placeholder="Bottle size, capacity, product type"
             />
             <button className="bg-[#c8ff2e] py-5 font-mono text-xs uppercase tracking-[0.18em] text-[#07111f]">
               Submit Inquiry
             </button>
-          </form>
+          </InquiryForm>
         </div>
       </section>
 

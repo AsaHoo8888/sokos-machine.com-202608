@@ -11,11 +11,14 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "payload": "payload --disable-transpile"
+    "payload": "payload --disable-transpile",
+    "test:inquiry": "node --test --experimental-strip-types src/lib/inquiry.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@payloadcms/db-postgres": "3.92.0",
+    "@payloadcms/email-nodemailer": "3.92.0",
+    "@payloadcms/email-nodemailer": "^3.92.0",
     "@payloadcms/next": "3.92.0",
     "@payloadcms/ui": "3.92.0",
     "class-variance-authority": "^0.7.1",
