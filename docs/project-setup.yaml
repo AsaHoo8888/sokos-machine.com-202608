@@ -1,0 +1,33 @@
+# Project-specific setup decisions. Do not store secrets in this file.
+version: 1
+project:
+  name: "sokos-machine.com 202608"
+  template: existing-nextjs
+  stack:
+    - Next.js
+    - React
+    - TypeScript
+    - Tailwind CSS
+    - Payload CMS
+    - PostgreSQL
+  deployment:
+    configured: false
+
+database:
+  engine: postgresql
+  hosting:
+    status: confirmed
+    choice: vps
+    confirmed_at: 2026-10-27
+    reason: "User selected a VPS-hosted PostgreSQL database."
+  connection_env_var: DATABASE_URI
+
+media:
+  storage:
+    status: pending
+    choice: null
+    confirmed_at: null
+    reason: ""
+  provider: null
+
+external_services: []

@@ -3,7 +3,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Sokos Filling Machine",
-  description: "Next.js frontend for a Directus-powered enterprise website.",
+  description: "Sokos Machinery beverage filling equipment and turnkey production lines.",
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
