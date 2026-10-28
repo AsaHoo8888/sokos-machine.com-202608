@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { Globe2, Mail, Phone, Search, Send, Share2 } from "lucide-react";
 import { InquiryForm } from "@/components/inquiry-form";
@@ -9,6 +10,7 @@ const navItems = [
   { label: "PRODUCTS", href: "/products" },
   { label: "SOLUTIONS", href: "/solutions" },
   { label: "SERVICES", href: "/services" },
+  { label: "ARTICLES", href: "/posts" },
   { label: "ABOUT", href: "/about" },
   { label: "CONTACT", href: "/contact" },
 ];
@@ -66,7 +68,14 @@ export function SiteHeader({ active = "HOME" }: { active?: string }) {
         <div className="mx-auto flex max-w-[1440px] items-center justify-between gap-8 px-5 py-5 md:px-10 md:py-6 xl:px-16">
           <div className="flex items-center gap-10">
             <Link href="/">
-              <img alt="Sokos Machinery Logo" className="h-11 w-auto" src={logoUrl} />
+              <Image
+                width={1303}
+                height={407}
+                sizes="280px"
+                alt="Sokos Machinery Logo"
+                className="h-11 w-auto"
+                src={logoUrl}
+              />
             </Link>
             <nav className="hidden items-center gap-6 lg:flex xl:gap-8">
               {navItems.map((item) => (
@@ -112,7 +121,14 @@ export function SiteFooter() {
     <footer className="border-t border-[#e2e8f0] bg-white">
       <div className="mx-auto grid max-w-[1200px] grid-cols-1 gap-10 px-5 py-24 md:grid-cols-4 md:px-16 lg:py-[120px]">
         <div>
-          <img alt="Sokos Logo" className="mb-8 h-10" src={logoUrl} />
+          <Image
+            width={1303}
+            height={407}
+            sizes="280px"
+            alt="Sokos Logo"
+            className="mb-8 h-10 w-auto"
+            src={logoUrl}
+          />
           <p className="mb-8 font-mono text-sm leading-6 text-slate-600">
             Precision engineering for industrial excellence. Leading manufacturer of liquid
             filling and packaging technology since 2004.
@@ -214,7 +230,7 @@ export function SiteFooter() {
             © 2024 Sokos Machinery. Precision engineering for industrial excellence.
           </p>
           <div className="flex gap-6 font-mono text-[10px] uppercase tracking-[0.2em] md:gap-8">
-            {[["Privacy Policy", "/privacy-policy"], ["Terms of Service", "#"], ["Compliance", "#"]].map(([label, href]) => (
+            {[["Articles", "/posts"], ["Privacy Policy", "/privacy-policy"], ["Terms of Service", "#"], ["Compliance", "#"]].map(([label, href]) => (
               <a className="text-slate-600 transition-colors hover:text-[#131314]" href={href} key={label}>
                 {label}
               </a>

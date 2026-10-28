@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, ChevronRight, Globe2 } from "lucide-react";
 
@@ -37,6 +38,7 @@ export function MainSiteHeader({ active = "Home" }: { active?: string }) {
     ["Home", "/"],
     ["Solutions", "/solutions"],
     ["Products", "/products"],
+    ["Articles", "/posts"],
     ["About", "/about"],
     ["Contact", "/contact"],
   ];
@@ -45,7 +47,10 @@ export function MainSiteHeader({ active = "Home" }: { active?: string }) {
     <header className="relative z-30 border-b border-slate-200 bg-white">
       <div className="mx-auto flex h-20 max-w-[1320px] items-center justify-between px-5 md:px-8">
         <Link className="flex items-center gap-3" href="/">
-          <img
+          <Image
+            width={2287}
+            height={465}
+            sizes="280px"
             alt="Sokos Machinery"
             className="h-11 w-auto"
             src="/images/home/sokos-logo-wide.png"
@@ -80,7 +85,10 @@ export function MainSiteFooter() {
     <footer className="bg-[#07111f] px-5 py-12 md:px-8">
       <div className="mx-auto flex max-w-[1320px] flex-col justify-between gap-8 border-t border-white/10 pt-10 md:flex-row md:items-center">
         <div>
-          <img
+          <Image
+            width={2287}
+            height={465}
+            sizes="280px"
             alt="Sokos Machinery"
             className="h-14 w-auto"
             src="/images/home/sokos-logo-white.png"
@@ -88,6 +96,12 @@ export function MainSiteFooter() {
           <p className="mt-4 max-w-xl text-sm leading-6 text-slate-400">
             Complete beverage filling and packaging lines for global factories.
           </p>
+          <Link
+            className="mr-6 mt-4 inline-block font-mono text-xs uppercase tracking-[0.16em] text-slate-400 transition hover:text-[#c8ff2e]"
+            href="/posts"
+          >
+            Articles
+          </Link>
           <Link
             className="mt-4 inline-block font-mono text-xs uppercase tracking-[0.16em] text-slate-400 transition hover:text-[#c8ff2e]"
             href="/privacy-policy"
