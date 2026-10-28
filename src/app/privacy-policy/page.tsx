@@ -16,6 +16,7 @@ const sections = [
     content: [
       "We collect information you choose to provide when you contact us, request a quotation, or send a project inquiry. This may include your name, business email, company, phone or WhatsApp number, country, and project requirements.",
       "Our website and hosting provider may also process basic technical information such as IP address, browser type, device information, requested pages, and access times for security and reliable site operation.",
+      "On our contact form, your browser contacts Country.is (api.country.is) to identify the country associated with your public IP address and preselect the phone country code. This service receives your IP address, but not your inquiry or phone number. We use only the returned country code, and you can change the selected country manually.",
     ],
   },
   {
@@ -79,7 +80,7 @@ export default function PrivacyPolicyPage() {
             through this website and our business communications.
           </p>
           <p className="mt-6 font-mono text-xs uppercase tracking-[0.16em] text-slate-400">
-            Effective August 17, 2026
+            Effective October 28, 2026
           </p>
         </div>
       </section>

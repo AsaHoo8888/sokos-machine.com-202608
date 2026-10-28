@@ -5,12 +5,12 @@ import {
   MapPinned,
   MessageCircle,
   Phone,
-  Send,
   ShieldCheck,
   Wrench,
 } from "lucide-react";
 import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
 import { InquiryForm } from "@/components/inquiry-form";
+import { ContactPhoneInput } from "@/components/contact-phone-input";
 
 const contactEmail = "benny.wang10@sokosmachinery.com";
 const contactPhone = "+86 13915678357";
@@ -18,16 +18,15 @@ const contactPhoneLink = "+8613915678357";
 
 const inquiryFields: Array<{
   name: string;
-  placeholder: string;
+  label: string;
+  autoComplete: string;
   required: boolean;
   type: "email" | "tel" | "text";
 }> = [
-  { name: "name", placeholder: "Full Name", required: true, type: "text" },
-  { name: "email", placeholder: "Work Email", required: true, type: "email" },
-  { name: "company", placeholder: "Company Name", required: false, type: "text" },
-  { name: "phone", placeholder: "Phone / WhatsApp", required: false, type: "tel" },
-  { name: "capacity", placeholder: "Target Capacity (BPH)", required: false, type: "text" },
-  { name: "country", placeholder: "Destination Country", required: false, type: "text" },
+  { name: "name", label: "Full Name", autoComplete: "name", required: true, type: "text" },
+  { name: "email", label: "Email", autoComplete: "email", required: true, type: "email" },
+  { name: "phone", label: "Phone", autoComplete: "tel-national", required: true, type: "tel" },
+  { name: "company", label: "Business / Organization", autoComplete: "organization", required: false, type: "text" },
 ];
 
 const contactCards = [
@@ -80,40 +79,35 @@ export default function ContactPage() {
               The more details you provide, the faster we can match the right washing, filling,
               capping, labeling, packing, and palletizing configuration.
             </p>
-            <InquiryForm className="mt-10 flex flex-col gap-5" source="contact-page">
-              <div className="grid grid-cols-1 gap-5 md:grid-cols-2">
-                {inquiryFields.map(({ name, placeholder, required, type }) => (
-                  <input
-                    className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
-                    key={placeholder}
-                    name={name}
-                    placeholder={placeholder}
-                    required={required}
-                    type={type}
-                  />
-                ))}
-                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary" name="product">
-                  <option>Water Filling Line</option>
-                  <option>Carbonated Drink Filling Line</option>
-                  <option>Juice Filling Line</option>
-                  <option>Oil Filling Line</option>
-                  <option>Beer Filling Line</option>
-                  <option>Viscous Product Filling Line</option>
-                </select>
-                <select className="border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary" name="inquiryType">
-                  <option>New complete line</option>
-                  <option>Single machine inquiry</option>
-                  <option>Upgrade existing line</option>
-                  <option>Spare parts / service</option>
-                </select>
-              </div>
-              <textarea
-                className="min-h-40 border border-slate-200 bg-[#eef3f6] px-4 py-4 text-sm outline-none transition focus:border-primary"
-                name="message"
-                placeholder="Bottle size, product type, target speed, factory layout, and other project notes"
-              />
-              <button className="inline-flex items-center justify-center gap-3 bg-primary px-6 py-5 font-mono text-xs uppercase tracking-[0.18em] text-white transition hover:bg-[#c8ff2e] hover:text-[#07111f]" type="submit">
-                Submit Technical Request <Send size={16} />
+            <InquiryForm className="mt-10 flex flex-col gap-7" source="contact-page">
+              {inquiryFields.map(({ name, label, autoComplete, required, type }) => (
+                <div className="flex flex-col gap-3 text-sm font-semibold" key={name}>
+                  <label htmlFor={`contact-${name}`}>{label}{required && <span className="text-red-600"> *</span>}</label>
+                  {name === "phone" ? (
+                    <ContactPhoneInput />
+                  ) : (
+                    <input
+                      autoComplete={autoComplete}
+                      className="min-h-11 w-full min-w-0 rounded-sm border border-slate-300 bg-white px-3 py-2 text-base font-normal text-[#07111f] focus-visible:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                      id={`contact-${name}`}
+                      name={name}
+                      required={required}
+                      type={type}
+                    />
+                  )}
+                </div>
+              ))}
+              <label className="flex flex-col gap-3 text-sm font-semibold" htmlFor="contact-message">
+                <span>Request<span className="text-red-600"> *</span></span>
+                <textarea
+                  className="min-h-32 w-full resize-y rounded-sm border border-slate-300 bg-white px-3 py-2 text-base font-normal text-[#07111f] focus-visible:border-primary focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+                  id="contact-message"
+                  name="message"
+                  required
+                />
+              </label>
+              <button className="min-h-11 self-start rounded-sm bg-primary px-5 py-2.5 text-base font-medium text-white transition-colors hover:bg-[#c8ff2e] hover:text-[#07111f] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary" type="submit">
+                Submit
               </button>
             </InquiryForm>
           </div>

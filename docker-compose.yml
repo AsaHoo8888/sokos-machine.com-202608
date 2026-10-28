@@ -1,0 +1,21 @@
+services:
+  postgres:
+    image: postgres:18-alpine
+    container_name: sokos-machine-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: sokos_machine_db
+      POSTGRES_USER: sokos_machine_user
+      POSTGRES_PASSWORD: sokos_local_password
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - sokos_postgres18_data:/var/lib/postgresql
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U sokos_machine_user -d sokos_machine_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  sokos_postgres18_data:
