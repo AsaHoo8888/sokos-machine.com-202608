@@ -12,7 +12,7 @@
     "start": "next start",
     "lint": "eslint",
     "payload": "payload --disable-transpile",
-    "test:inquiry": "node --test --experimental-strip-types src/lib/inquiry.test.ts"
+    "test:inquiry": "node --test --experimental-strip-types src/lib/inquiry.test.ts src/lib/smtp.test.ts"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

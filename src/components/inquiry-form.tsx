@@ -10,7 +10,7 @@ type InquiryFormProps = {
 };
 
 export function InquiryForm({ children, className, source }: InquiryFormProps) {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
+  const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error" | "timeout">("idle");
 
   async function submit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -25,13 +25,14 @@ export function InquiryForm({ children, className, source }: InquiryFormProps) {
         body: JSON.stringify({ ...data, source }),
         headers: { "Content-Type": "application/json" },
         method: "POST",
+        signal: AbortSignal.timeout(20_000),
       });
 
       if (!response.ok) throw new Error("Submission failed");
       form.reset();
       setStatus("sent");
-    } catch {
-      setStatus("error");
+    } catch (error) {
+      setStatus(error instanceof Error && error.name === "TimeoutError" ? "timeout" : "error");
     }
   }
 
@@ -50,6 +51,7 @@ export function InquiryForm({ children, className, source }: InquiryFormProps) {
         {status === "sending" && "Sending..."}
         {status === "sent" && "Thank you. Your inquiry has been received."}
         {status === "error" && "Unable to send. Please try again or contact us by email."}
+        {status === "timeout" && "We could not confirm your submission in time. Your inquiry may have been saved. Please contact us by email before submitting again."}
       </p>
     </form>
   );

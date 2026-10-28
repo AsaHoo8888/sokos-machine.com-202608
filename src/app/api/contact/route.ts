@@ -1,4 +1,5 @@
 import config from "@payload-config";
+import { after } from "next/server";
 import { getPayload } from "payload";
 
 import { parseInquiry } from "@/lib/inquiry";
@@ -56,23 +57,25 @@ export async function POST(request: Request) {
     });
 
     if (notificationConfigured && recipient) {
-      try {
-        await payload.sendEmail({
-          replyTo: inquiry.email,
-          subject: `New website inquiry: ${inquiry.product || inquiry.name}`,
-          text: Object.entries(inquiry)
-            .map(([key, value]) => `${key}: ${value}`)
-            .join("\n"),
-          to: recipient,
-        });
-        await payload.update({
-          collection: "inquiries",
-          id: created.id,
-          data: { emailStatus: "sent" },
-        });
-      } catch {
-        // The inquiry is already stored; email delivery can be retried from the CMS.
-      }
+      after(async () => {
+        try {
+          await payload.sendEmail({
+            replyTo: inquiry.email,
+            subject: `New website inquiry: ${inquiry.product || inquiry.name}`,
+            text: Object.entries(inquiry)
+              .map(([key, value]) => `${key}: ${value}`)
+              .join("\n"),
+            to: recipient,
+          });
+          await payload.update({
+            collection: "inquiries",
+            id: created.id,
+            data: { emailStatus: "sent" },
+          });
+        } catch {
+          payload.logger.error({ msg: "Inquiry email notification failed", inquiryId: created.id });
+        }
+      });
     }
 
     return Response.json({ ok: true }, { status: 201 });
