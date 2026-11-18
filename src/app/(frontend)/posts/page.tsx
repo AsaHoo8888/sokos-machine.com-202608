@@ -53,14 +53,14 @@ export default async function PostsPage({
                       href={`/posts/${encodeURIComponent(post.slug)}`}
                     >
                       {coverUrl && (
-                        <div className="relative aspect-[4/3] overflow-hidden bg-white">
+                        <div className="relative aspect-[4/3] self-start overflow-hidden bg-white">
                           <Image
                             fill
                             alt={cover.alt || post.title}
-                            className="object-cover"
+                            className="object-contain"
                             priority={index === 0}
                             sizes="(max-width: 767px) 100vw, (max-width: 1023px) 240px, 320px"
-                            src={coverUrl}
+                            src={`${coverUrl}${coverUrl.includes("?") ? "&" : "?"}v=${encodeURIComponent(cover.updatedAt)}`}
                           />
                         </div>
                       )}
