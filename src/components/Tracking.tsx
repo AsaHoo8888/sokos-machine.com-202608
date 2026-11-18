@@ -2,6 +2,7 @@ import config from "@payload-config";
 import { getPayload } from "payload";
 import Script from "next/script";
 import { unstable_cache } from "next/cache";
+import { connection } from "next/server";
 
 const getTracking = unstable_cache(async () => {
   const payload = await getPayload({ config });
@@ -10,6 +11,7 @@ const getTracking = unstable_cache(async () => {
 }, ["site-tracking"], { revalidate: 60 });
 
 export async function Tracking() {
+  await connection();
   const tracking = await getTracking();
   const gtmId = /^GTM-[A-Z0-9]+$/.test(tracking?.gtmId ?? "") ? tracking?.gtmId : null;
   const gaId = /^G-[A-Z0-9]+$/.test(tracking?.gaId ?? "") ? tracking?.gaId : null;
