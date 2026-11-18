@@ -461,6 +461,14 @@ export interface PayloadMigrationsSelect<T extends boolean = true> {
 export interface SiteSetting {
   id: number;
   siteName: string;
+  /**
+   * 留空即关闭。若已通过 GTM 安装 GA4 或 Clarity，请勿重复填写。其他广告像素可通过 GTM 配置。启用前请更新隐私政策，并按需在 GTM 配置用户同意管理。
+   */
+  tracking?: {
+    gtmId?: string | null;
+    gaId?: string | null;
+    clarityId?: string | null;
+  };
   updatedAt?: string | null;
   createdAt?: string | null;
 }
@@ -470,6 +478,13 @@ export interface SiteSetting {
  */
 export interface SiteSettingsSelect<T extends boolean = true> {
   siteName?: T;
+  tracking?:
+    | T
+    | {
+        gtmId?: T;
+        gaId?: T;
+        clarityId?: T;
+      };
   updatedAt?: T;
   createdAt?: T;
   globalType?: T;

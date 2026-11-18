@@ -57,7 +57,7 @@ export default async function PostsPage({
                           <Image
                             fill
                             alt={cover.alt || post.title}
-                            className="object-cover transition duration-500 group-hover:scale-105"
+                            className="object-contain"
                             priority={index === 0}
                             sizes="(max-width: 767px) 100vw, (max-width: 1023px) 240px, 320px"
                             src={coverUrl}

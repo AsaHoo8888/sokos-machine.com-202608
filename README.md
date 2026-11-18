@@ -44,3 +44,11 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Tracking tools
+
+In CMS → Site Settings → 追踪工具 / Tracking, enter a GTM container ID, GA4 measurement ID, or Microsoft Clarity project ID. Empty fields disable the corresponding tool. Settings refresh within approximately 60 seconds and apply to frontend pages only. Install other pixels through GTM; do not also configure GA4 or Clarity here if GTM already loads them.
+
+Apply the tracking database migration before deploying. IDs are public identifiers; never enter API secrets. Before enabling tracking, update the privacy policy and configure any required consent management (for example, through GTM). This integration does not provide a consent banner or conversion events. GA4 enhanced measurement and GTM history triggers can handle client-side navigation.
+
+Validate tracking ID fields with `node --test --experimental-strip-types src/lib/tracking.test.ts`.

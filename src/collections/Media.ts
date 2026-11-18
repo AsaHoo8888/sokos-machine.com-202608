@@ -13,7 +13,7 @@ export const Media: CollectionConfig = {
   },
   upload: {
     staticDir: path.resolve(process.cwd(), "media"),
-    mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif"],
+    mimeTypes: ["image/jpeg", "image/png", "image/webp", "image/gif", "image/avif", "video/mp4", "video/webm"],
   },
   fields: [{ name: "alt", type: "text", required: true }],
 };
