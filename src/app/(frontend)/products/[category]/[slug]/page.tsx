@@ -1,10 +1,12 @@
+export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, Send, ShieldCheck, Sparkles } from "lucide-react";
 import { InquiryForm } from "@/components/inquiry-form";
 import { MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
-import { getProductCategory, getProduct, productCategories } from "../../data";
+import { getProductCategory, getProduct } from "@/lib/products";
 
 type ProductPageProps = {
   params: Promise<{
@@ -13,31 +15,22 @@ type ProductPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return productCategories.flatMap((category) =>
-    category.products.map((product) => ({
-      category: category.slug,
-      slug: product.slug,
-    })),
-  );
-}
-
 export async function generateMetadata({ params }: ProductPageProps) {
   const { category, slug } = await params;
-  const product = getProduct(category, slug);
+  const product = await getProduct(category, slug);
 
   if (!product) return {};
 
   return {
-    title: `${product.model} | ${product.title}`,
-    description: product.shortDescription,
+    title: product.seoTitle || `${product.model} | ${product.title}`,
+    description: product.seoDescription || product.shortDescription,
   };
 }
 
 export default async function ProductDetailPage({ params }: ProductPageProps) {
   const { category: categorySlug, slug } = await params;
-  const category = getProductCategory(categorySlug);
-  const product = getProduct(categorySlug, slug);
+  const category = await getProductCategory(categorySlug);
+  const product = await getProduct(categorySlug, slug);
 
   if (!category || !product) notFound();
 

@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProduct } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -5,7 +8,7 @@ import { ArrowLeft, Play, Send, ShieldCheck, SlidersHorizontal, Wrench } from "l
 import { InquiryForm } from "@/components/inquiry-form";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { auxiliaryProducts, getAuxiliaryProduct } from "../data";
+
 
 type AuxiliaryProductPageProps = {
   params: Promise<{
@@ -13,29 +16,23 @@ type AuxiliaryProductPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return auxiliaryProducts.map((product) => ({
-    slug: product.slug,
-  }));
-}
-
 export async function generateMetadata({ params }: AuxiliaryProductPageProps) {
   const { slug } = await params;
-  const product = getAuxiliaryProduct(slug);
+  const product = await getFamilyProduct("auxiliary", slug);
 
   if (!product) {
     return {};
   }
 
   return {
-    title: `${product.title} | Sokos Auxiliary Equipment`,
-    description: product.shortDescription,
+    title: product.seoTitle || `${product.title} | Sokos Auxiliary Equipment`,
+    description: product.seoDescription || product.shortDescription,
   };
 }
 
 export default async function AuxiliaryProductPage({ params }: AuxiliaryProductPageProps) {
   const { slug } = await params;
-  const product = getAuxiliaryProduct(slug);
+  const product = await getFamilyProduct("auxiliary", slug);
 
   if (!product) {
     notFound();
@@ -129,13 +126,13 @@ export default async function AuxiliaryProductPage({ params }: AuxiliaryProductP
               <SectionLabel>Product Overview</SectionLabel>
               <h2 className="mb-6 text-4xl font-bold">Auxiliary Machine Description</h2>
               <div className="flex flex-col gap-5 leading-8 text-slate-600">
-                {product.description.map((paragraph) => (
+                {(product.description ?? [product.shortDescription]).map((paragraph) => (
                   <p key={paragraph}>{paragraph}</p>
                 ))}
               </div>
             </div>
             <div className="grid grid-cols-1 gap-5">
-              {product.highlights.map((highlight) => (
+              {(product.highlights ?? []).map((highlight) => (
                 <div className="border border-[#e2e8f0] bg-[#f9f9f9] p-6" key={highlight}>
                   <div className="mb-3 flex size-10 items-center justify-center bg-primary/10 text-primary">
                     <ShieldCheck size={18} />

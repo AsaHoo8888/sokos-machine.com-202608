@@ -1,10 +1,14 @@
+export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowRight, Factory, Gauge, Layers3 } from "lucide-react";
 import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
-import { fillingSubCategories, productCategories } from "./data";
+import { fillingSubCategories } from "@/lib/product-categories";
+import { getProductCategories } from "@/lib/products";
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const productCategories = await getProductCategories();
   return (
     <main className="bg-[#07111f] text-white">
       <MainSiteHeader active="Products" />

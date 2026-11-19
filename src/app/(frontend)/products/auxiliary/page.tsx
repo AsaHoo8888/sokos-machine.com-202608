@@ -1,9 +1,12 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProducts } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Cog, PackageCheck, ShieldCheck } from "lucide-react";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { auxiliaryProducts } from "./data";
+
 
 export const metadata = {
   title: "Auxiliary Equipment | Sokos Machinery",
@@ -11,7 +14,8 @@ export const metadata = {
     "Auxiliary equipment for beverage filling lines, including water treatment, blending, blow molding, labeling, packaging, palletizing, CO2 mixing, and depalletizing systems.",
 };
 
-export default function AuxiliaryProductsPage() {
+export default async function AuxiliaryProductsPage() {
+  const auxiliaryProducts = await getFamilyProducts("auxiliary");
   return (
     <main className="bg-[#f5f7fa] text-[#131314]">
       <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">

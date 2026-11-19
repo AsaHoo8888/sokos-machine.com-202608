@@ -1,14 +1,18 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProducts } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Gauge, ShieldCheck, Sparkles } from "lucide-react";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { carbonatedFillingProducts, categoryDescription, sharedParameterRows } from "./data";
+import { categoryDescription, sharedParameterRows } from "./data";
 
 const productImage =
   "/images/products/carbonated-beverages-filling-machine/dcgf-60-60-20.jpg";
 
-export default function CarbonatedBeveragesFillingMachineCategoryPage() {
+export default async function CarbonatedBeveragesFillingMachineCategoryPage() {
+  const carbonatedFillingProducts = await getFamilyProducts("carbonated-beverages-filling-machine");
   return (
     <main className="bg-[#f5f7fa] text-[#131314]">
       <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">

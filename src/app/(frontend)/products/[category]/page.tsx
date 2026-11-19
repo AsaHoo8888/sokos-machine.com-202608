@@ -1,9 +1,11 @@
+export const dynamic = "force-dynamic";
+
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import { ArrowButton, MainSiteFooter, MainSiteHeader, SmallLabel } from "@/components/main-site-shell";
-import { getProductCategory, productCategories } from "../data";
+import { getProductCategory } from "@/lib/products";
 
 type CategoryPageProps = {
   params: Promise<{
@@ -11,15 +13,9 @@ type CategoryPageProps = {
   }>;
 };
 
-export function generateStaticParams() {
-  return productCategories.map((category) => ({
-    category: category.slug,
-  }));
-}
-
 export async function generateMetadata({ params }: CategoryPageProps) {
   const { category: slug } = await params;
-  const category = getProductCategory(slug);
+  const category = await getProductCategory(slug);
 
   if (!category) return {};
 
@@ -31,7 +27,7 @@ export async function generateMetadata({ params }: CategoryPageProps) {
 
 export default async function ProductCategoryPage({ params }: CategoryPageProps) {
   const { category: slug } = await params;
-  const category = getProductCategory(slug);
+  const category = await getProductCategory(slug);
 
   if (!category) notFound();
 

@@ -1,11 +1,15 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProducts } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Gauge, ShieldCheck, Waves } from "lucide-react";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { categoryDescription, sharedParameterRows, waterFillingProducts } from "./data";
+import { categoryDescription, sharedParameterRows } from "./data";
 
-export default function WaterFillingMachineCategoryPage() {
+export default async function WaterFillingMachineCategoryPage() {
+  const waterFillingProducts = await getFamilyProducts("water-filling-machine");
   return (
     <main className="bg-[#f5f7fa] text-[#131314]">
       <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
@@ -30,7 +34,7 @@ export default function WaterFillingMachineCategoryPage() {
               </p>
               <div className="mt-10 grid grid-cols-2 gap-6 md:grid-cols-3">
                 {[
-                  ["8 Models", "CGF Series"],
+                  [`${waterFillingProducts.length} Models`, "CGF Series"],
                   ["2,000-36,000", "BPH Range"],
                   ["3-in-1", "Wash Fill Cap"],
                 ].map(([value, label]) => (

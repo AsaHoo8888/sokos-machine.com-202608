@@ -52,3 +52,20 @@ In CMS → Site Settings → 追踪工具 / Tracking, enter a GTM container ID, 
 Apply the tracking database migration before deploying. IDs are public identifiers; never enter API secrets. Before enabling tracking, update the privacy policy and configure any required consent management (for example, through GTM). This integration does not provide a consent banner or conversion events. GA4 enhanced measurement and GTM history triggers can handle client-side navigation.
 
 Validate tracking ID fields with `node --test --experimental-strip-types src/lib/tracking.test.ts`.
+
+## Products CMS
+
+CMS → 产品 manages existing product names, models, images, descriptions, highlights,
+YouTube links, parameters, SEO fields, ordering and publication status. Public product
+routes read published CMS records on each request; drafts and archived products return
+404. Category headings and series overview copy remain in code. Preserve slugs to keep
+existing product URLs working. Uploaded cover images take precedence over the original
+local image path. Technical parameters use a JSON matrix to retain multi-model tables.
+
+Run `npm run test:products` to validate product access rules and source data.
+Run `npm run sync:products` to import the 38 existing products, including the legacy
+water monoblock page. Imports use a transaction and skip existing slugs, preserving CMS
+edits; they do not overwrite or delete records. Original data files remain as the import
+source. In production, apply database migrations before importing (`npm run payload -- migrate`);
+local development uses Payload's existing schema push behavior. The import targets the
+database configured by `DATABASE_URI`; it does not deploy the website.

@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProduct } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -5,7 +8,7 @@ import { ArrowLeft, Send, ShieldCheck, SlidersHorizontal, Thermometer } from "lu
 import { InquiryForm } from "@/components/inquiry-form";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { getJuiceFillingProduct, juiceFillingProducts } from "../data";
+
 
 type ProductPageProps = {
   params: Promise<{
@@ -15,29 +18,24 @@ type ProductPageProps = {
 
 const productImage = "/images/products/juice-line-filling-machine.jpg";
 
-export function generateStaticParams() {
-  return juiceFillingProducts.map((product) => ({
-    slug: product.slug,
-  }));
-}
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getJuiceFillingProduct(slug);
+  const product = await getFamilyProduct("juice-filling-machine", slug);
 
   if (!product) {
     return {};
   }
 
   return {
-    title: `${product.model} | ${product.title}`,
-    description: product.shortDescription,
+    title: product.seoTitle || `${product.model} | ${product.title}`,
+    description: product.seoDescription || product.shortDescription,
   };
 }
 
 export default async function JuiceFillingProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getJuiceFillingProduct(slug);
+  const product = await getFamilyProduct("juice-filling-machine", slug);
 
   if (!product) {
     notFound();

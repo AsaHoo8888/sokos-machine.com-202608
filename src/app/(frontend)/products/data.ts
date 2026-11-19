@@ -1,20 +1,17 @@
+import { productCategoryDefinitions } from "../../../lib/product-categories.ts";
 import {
   carbonatedFillingProducts,
-  categoryDescription as carbonatedDescription,
-} from "./carbonated-beverages-filling-machine/data";
+} from "./carbonated-beverages-filling-machine/data.ts";
 import {
-  categoryDescription as beerDescription,
   glassBottleBeerProducts,
-} from "./glass-bottle-beer-filling-machine/data";
+} from "./glass-bottle-beer-filling-machine/data.ts";
 import {
-  categoryDescription as juiceDescription,
   juiceFillingProducts,
-} from "./juice-filling-machine/data";
+} from "./juice-filling-machine/data.ts";
 import {
-  categoryDescription as waterDescription,
   waterFillingProducts,
-} from "./water-filling-machine/data";
-import { auxiliaryProducts, type AuxiliaryProduct } from "./auxiliary/data";
+} from "./water-filling-machine/data.ts";
+import { auxiliaryProducts, type AuxiliaryProduct } from "./auxiliary/data.ts";
 
 export type Product = {
   categorySlug: string;
@@ -82,145 +79,21 @@ const fillingProducts = [
   ...fromFillingProducts("filling-machine", glassBottleBeerProducts),
 ];
 
-export const productCategories: ProductCategory[] = [
-  {
-    slug: "water-treatment",
-    title: "Water Treatment",
-    eyebrow: "Front-End Purification",
-    description:
-      "RO purification, filtration, UV sterilization, ozone treatment, and process water preparation for beverage plants.",
-    image: "/images/products/auxiliary/water-treatment.png",
-    code: "WTS",
-    metric: "2-30T/H",
-    products: fromAuxiliaryProducts("water-treatment", auxiliaryBySlug(["water-treatment-system"])),
-  },
-  {
-    slug: "blending",
-    title: "Blending",
-    eyebrow: "Beverage Preparation",
-    description:
-      "Ingredient dissolving, syrup preparation, juice blending, hot/cold mixing, CIP, and sanitary tank systems.",
-    image: "/images/products/auxiliary/juice-blending-system.png",
-    code: "MIX",
-    metric: "CIP Ready",
-    products: fromAuxiliaryProducts("blending", auxiliaryBySlug(["juice-blending-system"])),
-  },
-  {
-    slug: "blow-molding-machine",
-    title: "Blow Molding Machine",
-    eyebrow: "PET Bottle Forming",
-    description:
-      "Servo PET bottle blow molding systems for stable bottle forming before filling and packaging.",
-    image: "/images/products/auxiliary/blow-molding-machine.png",
-    code: "BBM",
-    metric: "Servo Drive",
-    products: fromAuxiliaryProducts(
-      "blow-molding-machine",
-      auxiliaryBySlug(["fully-automatic-blow-molding-machine"]),
-    ),
-  },
-  {
-    slug: "filling-machine",
-    title: "Filling Machine",
-    eyebrow: "Core Monoblock Systems",
-    description:
-      "Water, carbonated drink, juice, and glass bottle beer rinsing, filling, and capping machines.",
-    image: "/images/products/water-filling-60-head.jpg",
-    code: "FILL",
-    metric: `${fillingProducts.length} Models`,
-    products: fillingProducts,
-  },
-  {
-    slug: "labeling-machine",
-    title: "Labeling Machine",
-    eyebrow: "Container Decoration",
-    description:
-      "Rotary OPP, rotary self-adhesive, linear self-adhesive, and shrink sleeve labeling systems.",
-    image: "/images/products/auxiliary/rotary-self-adhesive-labeler.png",
-    code: "LBL",
-    metric: "4 Types",
-    products: fromAuxiliaryProducts(
-      "labeling-machine",
-      auxiliaryBySlug([
-        "rotary-opp-labeling-machine",
-        "rotary-self-adhesive-labeler",
-        "linear-self-adhesive-labeler",
-        "shrink-sleeve-labeler",
-      ]),
-    ),
-  },
-  {
-    slug: "packaging-machine",
-    title: "Packaging Machine",
-    eyebrow: "End-of-Line Packing",
-    description:
-      "Shrink wrapping and pack formation systems for bottle bundles, trays, cartons, and finished packs.",
-    image: "/images/products/auxiliary/shrink-wrap-machine.png",
-    code: "PKG",
-    metric: "22-60 PPM",
-    products: fromAuxiliaryProducts("packaging-machine", auxiliaryBySlug(["shrink-wrap-machine"])),
-  },
-  {
-    slug: "palletizing-machine",
-    title: "Palletizing Machine",
-    eyebrow: "Automatic Stacking",
-    description:
-      "Finished pack stacking, pallet handling, layer formation, and automated warehouse transfer preparation.",
-    image: "/images/products/auxiliary/palletizer.png",
-    code: "PAL",
-    metric: "Auto Stack",
-    products: fromAuxiliaryProducts("palletizing-machine", auxiliaryBySlug(["palletizer"])),
-  },
-  {
-    slug: "co2-mixer",
-    title: "CO2 Mixer",
-    eyebrow: "Carbonation Control",
-    description:
-      "Sanitary carbon dioxide mixing equipment for sparkling water, soda, cola, and carbonated beverages.",
-    image: "/images/products/co2-mixer.jpg",
-    code: "CO2",
-    metric: "Pressure Control",
-    products: fromAuxiliaryProducts("co2-mixer", auxiliaryBySlug(["co2-mixer"])),
-  },
-  {
-    slug: "depalletizer",
-    title: "Depalletizer",
-    eyebrow: "Empty Container Handling",
-    description:
-      "Automatic bottle, can, and pallet unloading systems for high-speed filling line infeed.",
-    image: "/images/products/auxiliary/depalletizer.png",
-    code: "DEP",
-    metric: "200-600 BPM",
-    products: fromAuxiliaryProducts("depalletizer", auxiliaryBySlug(["depalletizer"])),
-  },
-];
+const auxiliarySlugs: Record<string, string[]> = {
+  "water-treatment": ["water-treatment-system"],
+  blending: ["juice-blending-system"],
+  "blow-molding-machine": ["fully-automatic-blow-molding-machine"],
+  "labeling-machine": ["rotary-opp-labeling-machine", "rotary-self-adhesive-labeler", "linear-self-adhesive-labeler", "shrink-sleeve-labeler"],
+  "packaging-machine": ["shrink-wrap-machine"],
+  "palletizing-machine": ["palletizer"],
+  "co2-mixer": ["co2-mixer"],
+  depalletizer: ["depalletizer"],
+};
 
-export const fillingSubCategories = [
-  {
-    href: "/products/filling-machine",
-    title: "Water Filling Machine",
-    text: waterDescription,
-    image: "/images/products/water-filling-machine/cgf-60-60-20.jpg",
-  },
-  {
-    href: "/products/filling-machine",
-    title: "Carbonated Beverage Filling Machine",
-    text: carbonatedDescription,
-    image: "/images/products/carbonated-beverages-filling-machine/dcgf-60-60-20.jpg",
-  },
-  {
-    href: "/products/filling-machine",
-    title: "Juice Filling Machine",
-    text: juiceDescription,
-    image: "/images/products/juice-filling-machine/rcgf-40-40-10.jpg",
-  },
-  {
-    href: "/products/filling-machine",
-    title: "Glass Bottle Beer Filling Machine",
-    text: beerDescription,
-    image: "/images/products/glass-bottle-beer-filling-machine/bdcgf-24-24-8.jpg",
-  },
-];
+export const productCategories: ProductCategory[] = productCategoryDefinitions.map((category) => ({
+  ...category,
+  products: category.slug === "filling-machine" ? fillingProducts : fromAuxiliaryProducts(category.slug, auxiliaryBySlug(auxiliarySlugs[category.slug])),
+}));
 
 export function getProductCategory(slug: string) {
   return productCategories.find((category) => category.slug === slug);

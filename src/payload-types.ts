@@ -72,6 +72,7 @@ export interface Config {
     posts: Post;
     media: Media;
     inquiries: Inquiry;
+    products: Product;
     'payload-kv': PayloadKv;
     'payload-locked-documents': PayloadLockedDocument;
     'payload-preferences': PayloadPreference;
@@ -84,6 +85,7 @@ export interface Config {
     posts: PostsSelect<false> | PostsSelect<true>;
     media: MediaSelect<false> | MediaSelect<true>;
     inquiries: InquiriesSelect<false> | InquiriesSelect<true>;
+    products: ProductsSelect<false> | ProductsSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
     'payload-locked-documents': PayloadLockedDocumentsSelect<false> | PayloadLockedDocumentsSelect<true>;
     'payload-preferences': PayloadPreferencesSelect<false> | PayloadPreferencesSelect<true>;
@@ -240,6 +242,72 @@ export interface Inquiry {
 }
 /**
  * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products".
+ */
+export interface Product {
+  id: number;
+  title: string;
+  slug: string;
+  model: string;
+  categorySlug:
+    | 'water-treatment'
+    | 'blending'
+    | 'blow-molding-machine'
+    | 'filling-machine'
+    | 'labeling-machine'
+    | 'packaging-machine'
+    | 'palletizing-machine'
+    | 'co2-mixer'
+    | 'depalletizer';
+  family:
+    | 'water-filling-machine'
+    | 'carbonated-beverages-filling-machine'
+    | 'juice-filling-machine'
+    | 'glass-bottle-beer-filling-machine'
+    | 'auxiliary'
+    | 'water-filling-monoblock';
+  categoryLabel?: string | null;
+  /**
+   * 使用 /images/... 本站路径；上传主图后优先显示上传图片。
+   */
+  image: string;
+  coverImage?: (number | null) | Media;
+  videoUrl?: string | null;
+  heads?: string | null;
+  shortDescription: string;
+  description?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  highlights?:
+    | {
+        text: string;
+        id?: string | null;
+      }[]
+    | null;
+  /**
+   * 二维表格，例如 [["Parameter", "Value"], ["Capacity", "2000 BPH"]]；保留多型号表格的全部列。
+   */
+  parameters:
+    | {
+        [k: string]: unknown;
+      }
+    | unknown[]
+    | string
+    | number
+    | boolean
+    | null;
+  sortOrder: number;
+  status: 'draft' | 'published' | 'archived';
+  seoTitle?: string | null;
+  seoDescription?: string | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
  * via the `definition` "payload-kv".
  */
 export interface PayloadKv {
@@ -281,6 +349,10 @@ export interface PayloadLockedDocument {
     | ({
         relationTo: 'inquiries';
         value: number | Inquiry;
+      } | null)
+    | ({
+        relationTo: 'products';
+        value: number | Product;
       } | null);
   globalSlug?: string | null;
   user: {
@@ -411,6 +483,42 @@ export interface InquiriesSelect<T extends boolean = true> {
   source?: T;
   status?: T;
   emailStatus?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "products_select".
+ */
+export interface ProductsSelect<T extends boolean = true> {
+  title?: T;
+  slug?: T;
+  model?: T;
+  categorySlug?: T;
+  family?: T;
+  categoryLabel?: T;
+  image?: T;
+  coverImage?: T;
+  videoUrl?: T;
+  heads?: T;
+  shortDescription?: T;
+  description?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  highlights?:
+    | T
+    | {
+        text?: T;
+        id?: T;
+      };
+  parameters?: T;
+  sortOrder?: T;
+  status?: T;
+  seoTitle?: T;
+  seoDescription?: T;
   updatedAt?: T;
   createdAt?: T;
 }

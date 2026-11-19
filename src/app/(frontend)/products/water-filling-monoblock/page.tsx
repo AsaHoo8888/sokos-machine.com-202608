@@ -1,19 +1,21 @@
+import { notFound } from "next/navigation";
+import { getProduct } from "@/lib/products";
 import Image from "next/image";
 import { Send, ShieldCheck, SlidersHorizontal, Waves } from "lucide-react";
 import { InquiryForm } from "@/components/inquiry-form";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
 
-const productImage = "/images/product-filling-machine.jpg";
+export const dynamic = "force-dynamic";
 
-const specs = [
-  ["Heads (Rinse-Fill-Cap)", "Sets", "18 - 18 - 6", "DIN/CE"],
-  ["Production Capacity", "BPH", "2,000 - 8,000", "Adjustable"],
-  ["Total Installed Power", "kW", "4.5", "High Efficiency"],
-  ["Air Consumption", "m3/min", "0.3", "0.6 MPa"],
-  ["Suitable Bottle Size", "ml", "250 - 2000", "PET"],
-];
+export async function generateMetadata() {
+  const product = await getProduct("filling-machine", "water-filling-monoblock");
+  return product ? { title: product.seoTitle || product.title, description: product.seoDescription || product.shortDescription } : {};
+}
 
-export default function SingleProductPage() {
+export default async function SingleProductPage() {
+  const product = await getProduct("filling-machine", "water-filling-monoblock");
+  if (!product) notFound();
+  const specs = product.parameters;
   return (
     <main className="bg-[#f5f7fa] text-[#131314]">
       <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
@@ -26,7 +28,7 @@ export default function SingleProductPage() {
                 Bottling Innovation
               </span>
               <h1 className="text-5xl font-bold leading-tight md:text-7xl">
-                3-in-1 Water Filling Monoblock
+                {product.title}
               </h1>
             </div>
 
@@ -38,20 +40,19 @@ export default function SingleProductPage() {
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1280px) 50vw, 660px"
                     priority
-                    alt="3-in-1 water filling monoblock"
+                    alt={product.title}
                     className="size-full object-contain p-8"
-                    src={productImage}
+                    src={product.image}
                   />
                 </div>
                 <div className="absolute bottom-4 left-4 border border-[#e2e8f0] bg-white/90 px-2 py-1 font-mono text-xs text-slate-600">
-                  MODEL: SKS-W3IN1-18186
+                  MODEL: {product.model}
                 </div>
               </div>
 
               <div className="flex flex-col gap-8">
                 <p className="max-w-xl text-lg leading-8 text-slate-600">
-                  The Sokos 3-in-1 series integrates rinsing, filling, and capping into a
-                  single high-efficiency frame for still water production.
+                  {product.shortDescription}
                 </p>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="border-l-2 border-primary pl-4">
@@ -157,7 +158,7 @@ export default function SingleProductPage() {
                   </div>
                 </div>
                 <InquiryForm className="flex flex-col gap-5" source="water-filling-monoblock">
-                  <input name="product" type="hidden" value="3-in-1 Water Filling Monoblock" />
+                  <input name="product" type="hidden" value={product.title} />
                   <div className="grid grid-cols-2 gap-4">
                     <input className="border border-[#e2e8f0] p-3" name="name" placeholder="Name" required type="text" />
                     <input className="border border-[#e2e8f0] p-3" name="company" placeholder="Company" type="text" />

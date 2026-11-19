@@ -1,3 +1,6 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProduct } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
@@ -5,7 +8,7 @@ import { ArrowLeft, Send, ShieldCheck, SlidersHorizontal, Wine } from "lucide-re
 import { InquiryForm } from "@/components/inquiry-form";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { getGlassBottleBeerProduct, glassBottleBeerProducts } from "../data";
+
 
 type ProductPageProps = {
   params: Promise<{
@@ -15,29 +18,24 @@ type ProductPageProps = {
 
 const productImage = "/images/products/beer-line-filling-machine.jpg";
 
-export function generateStaticParams() {
-  return glassBottleBeerProducts.map((product) => ({
-    slug: product.slug,
-  }));
-}
 
 export async function generateMetadata({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getGlassBottleBeerProduct(slug);
+  const product = await getFamilyProduct("glass-bottle-beer-filling-machine", slug);
 
   if (!product) {
     return {};
   }
 
   return {
-    title: `${product.model} | ${product.title}`,
-    description: product.shortDescription,
+    title: product.seoTitle || `${product.model} | ${product.title}`,
+    description: product.seoDescription || product.shortDescription,
   };
 }
 
 export default async function GlassBottleBeerProductPage({ params }: ProductPageProps) {
   const { slug } = await params;
-  const product = getGlassBottleBeerProduct(slug);
+  const product = await getFamilyProduct("glass-bottle-beer-filling-machine", slug);
 
   if (!product) {
     notFound();

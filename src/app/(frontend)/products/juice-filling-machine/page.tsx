@@ -1,13 +1,17 @@
+export const dynamic = "force-dynamic";
+
+import { getFamilyProducts } from "@/lib/products";
 import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft, ArrowRight, Gauge, ShieldCheck, Thermometer } from "lucide-react";
 import { SectionLabel } from "@/components/page-primitives";
 import { SiteFooter, SiteHeader } from "@/components/site-shell";
-import { categoryDescription, juiceFillingProducts, sharedParameterRows } from "./data";
+import { categoryDescription, sharedParameterRows } from "./data";
 
 const productImage = "/images/products/juice-line-filling-machine.jpg";
 
-export default function JuiceFillingMachineCategoryPage() {
+export default async function JuiceFillingMachineCategoryPage() {
+  const juiceFillingProducts = await getFamilyProducts("juice-filling-machine");
   return (
     <main className="bg-[#f5f7fa] text-[#131314]">
       <div className="mx-auto min-h-screen max-w-[2000px] bg-white shadow-sm">
