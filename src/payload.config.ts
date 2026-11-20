@@ -18,6 +18,8 @@ export default buildConfig({
   email: smtpEmailAdapter,
   globals: [SiteSettings],
   db: postgresAdapter({
+    // Local development shares the server database; apply schema changes through migrations.
+    push: false,
     pool: {
       connectionString: process.env.DATABASE_URI || "",
     },
